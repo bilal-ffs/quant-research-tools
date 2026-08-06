@@ -87,6 +87,8 @@ def drawdown_series(
 
     # Step 4: Compute running equity peak
 
+    running_peak = equity_curve.cummax()
+
     # Step 5: Compute drawdown series
 
 def max_drawdown(
