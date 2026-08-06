@@ -70,7 +70,14 @@ def drawdown_series(
             "returns cannot be empty."
         )
 
-    # Step 2: Remove missing values
+        # Step 2: Remove missing values
+
+    returns = returns.dropna()
+
+    if returns.empty:
+        raise ValueError(
+            "returns contains only missing values."
+        )
 
     # Step 3: Compute cumulative equity curve
 
