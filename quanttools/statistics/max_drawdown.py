@@ -58,7 +58,25 @@ def drawdown_series(
     -----
     Drawdown is measured relative to the running equity peak.
     """
-    raise NotImplementedError
+        # Step 1: Validate input
+
+    if not isinstance(returns, pd.Series):
+        raise TypeError(
+            "returns must be a pandas Series."
+        )
+
+    if returns.empty:
+        raise ValueError(
+            "returns cannot be empty."
+        )
+
+    # Step 2: Remove missing values
+
+    # Step 3: Compute cumulative equity curve
+
+    # Step 4: Compute running equity peak
+
+    # Step 5: Compute drawdown series
 
 def max_drawdown(
     returns: pd.Series,
