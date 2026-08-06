@@ -58,7 +58,7 @@ def drawdown_series(
     -----
     Drawdown is measured relative to the running equity peak.
     """
-        # Step 1: Validate input
+    # Step 1: Validate input
 
     if not isinstance(returns, pd.Series):
         raise TypeError(
@@ -70,7 +70,7 @@ def drawdown_series(
             "returns cannot be empty."
         )
 
-        # Step 2: Remove missing values
+    # Step 2: Remove missing values
 
     returns = returns.dropna()
 
@@ -80,6 +80,10 @@ def drawdown_series(
         )
 
     # Step 3: Compute cumulative equity curve
+
+    growth_factor = 1 + returns
+
+    equity_curve = growth_factor.cumprod()
 
     # Step 4: Compute running equity peak
 
