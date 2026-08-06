@@ -91,6 +91,10 @@ def drawdown_series(
 
     # Step 5: Compute drawdown series
 
+    drawdown = (equity_curve / running_peak) - 1
+
+    return drawdown
+
 def max_drawdown(
     returns: pd.Series,
 ) -> float:
