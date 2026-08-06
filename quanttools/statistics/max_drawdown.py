@@ -124,7 +124,9 @@ def max_drawdown(
     >>> max_drawdown(returns)
     -0.25
     """
-    raise NotImplementedError
+    drawdown = drawdown_series(returns)
+
+    return float(drawdown.min())
 
 def drawdown_duration(
     returns: pd.Series,
