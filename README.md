@@ -31,7 +31,7 @@ The goal is to provide transparent, well-documented utilities that can be reused
 
 ## Features
 
-### 📊 Performance Analytics
+###  Performance Analytics
 
 - Sharpe Ratio
 - Sortino Ratio
@@ -42,7 +42,7 @@ The goal is to provide transparent, well-documented utilities that can be reused
 
 ---
 
-### 🧪 Strategy Validation
+###  Strategy Validation
 
 - Walk Forward Analysis
 - Monte Carlo Simulation
@@ -52,7 +52,7 @@ The goal is to provide transparent, well-documented utilities that can be reused
 
 ---
 
-### 📈 Portfolio Analytics
+###  Portfolio Analytics
 
 - Equal Weight
 - Risk Parity
@@ -62,7 +62,7 @@ The goal is to provide transparent, well-documented utilities that can be reused
 
 ---
 
-### ⚠️ Risk Management
+###  Risk Management
 
 - Position Sizing
 - Kelly Criterion
@@ -72,7 +72,7 @@ The goal is to provide transparent, well-documented utilities that can be reused
 
 ---
 
-### 📉 Indicators
+###  Indicators
 
 - ATR
 - ADX
@@ -84,7 +84,7 @@ The goal is to provide transparent, well-documented utilities that can be reused
 
 ---
 
-### 📚 Research Utilities
+###  Research Utilities
 
 - Equity Curves
 - Drawdown Charts
