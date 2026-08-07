@@ -48,4 +48,11 @@ def cagr(
 
     growth_factor = 1 + returns
 
-    equity_curve = growth_factor.cumprod()
+    equity_curve = growth_factor.cumprod(
+        
+    )
+    # Step 3: Compute investment duration
+
+    periods = len(returns)
+
+    years = periods / periods_per_year
