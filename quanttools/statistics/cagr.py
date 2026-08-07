@@ -44,3 +44,8 @@ def cagr(
     returns = validate_returns(
         returns
     )
+    # Step 2: Compute cumulative equity curve
+
+    growth_factor = 1 + returns
+
+    equity_curve = growth_factor.cumprod()
