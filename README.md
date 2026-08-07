@@ -1,150 +1,107 @@
-Python 3.12
-
-MIT License
-
-Status: In Development
-
-Contributions Welcome
-
 # Quant Research Tools
 
-> An open-source Python toolkit for quantitative finance research, systematic trading, portfolio analytics, and statistical validation.
+![Python](https://img.shields.io/badge/Python-3.13-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 
----
-
-## Overview
-
-Quant Research Tools is a modular Python library designed to support the research lifecycle of systematic trading strategies.
-
-The project focuses on building reusable tools for:
-
-- Performance analytics
-- Strategy validation
-- Portfolio construction
-- Risk management
-- Financial indicators
-- Research visualization
-
-The goal is to provide transparent, well-documented utilities that can be reused across quantitative research workflows.
+Open-source quantitative finance utilities for systematic trading, portfolio analytics, and financial research.
 
 ---
 
 ## Features
 
-###  Performance Analytics
+### Statistics
+
+- ✅ Drawdown Series
+- ✅ Maximum Drawdown
+- ✅ Drawdown Duration
+- 🚧 Recovery Time
+
+### Planned
 
 - Sharpe Ratio
 - Sortino Ratio
 - Calmar Ratio
 - Profit Factor
-- Maximum Drawdown
-- Expectancy
+- CAGR
+- Volatility
+- Value at Risk (VaR)
+- Conditional VaR
+- Beta
+- Alpha
 
 ---
 
-###  Strategy Validation
+## Installation
 
-- Walk Forward Analysis
-- Monte Carlo Simulation
-- Bootstrap Analysis
-- Parameter Stability
-- Out-of-Sample Testing
+```bash
+git clone https://github.com/bilal-ffs/quant-research-tools.git
 
----
+cd quant-research-tools
 
-###  Portfolio Analytics
-
-- Equal Weight
-- Risk Parity
-- Correlation Matrix
-- Covariance Matrix
-- Portfolio Statistics
-
----
-
-###  Risk Management
-
-- Position Sizing
-- Kelly Criterion
-- VaR
-- CVaR
-- Risk of Ruin
-
----
-
-###  Indicators
-
-- ATR
-- ADX
-- EMA
-- DEMA
-- VWAP
-- SuperTrend
-- Rolling Variance
-
----
-
-###  Research Utilities
-
-- Equity Curves
-- Drawdown Charts
-- Rolling Statistics
-- Monthly Returns
-- Performance Reports
-
----
-
-## Repository Structure
-
+pip install -e .
 ```
 
-quanttools/
-├── statistics/
-├── validation/
-├── risk/
-├── portfolio/
-├── indicators/
-├── visualization/
-└── utilities/
+---
 
+## Running Tests
+
+```bash
+pytest
+```
+
+---
+
+## Project Structure
+
+```
+quant-research-tools/
+│
+├── quanttools/
+│   ├── statistics/
+│   ├── portfolio/
+│   ├── risk/
+│   ├── indicators/
+│   ├── utilities/
+│   ├── validation/
+│   └── visualization/
+│
+├── tests/
+├── docs/
+├── examples/
+└── notebooks/
 ```
 
 ---
 
 ## Roadmap
 
-### Version 0.1
+### Version 0.1.0
 
-- [ ] Performance Metrics
-- [ ] Unit Tests
-- [ ] Documentation
+- Drawdown Series
+- Maximum Drawdown
+- Drawdown Duration
 
-### Version 0.2
+### Version 0.2.0
 
-- [ ] Validation Framework
-- [ ] Risk Models
-- [ ] Portfolio Analytics
+- Sharpe Ratio
+- Sortino Ratio
+- Calmar Ratio
 
-### Version 0.3
+### Version 0.3.0
 
-- [ ] Indicators
-- [ ] Visualizations
-- [ ] Research Reports
+- Risk Analytics
+- Portfolio Metrics
 
 ---
 
-## Philosophy
+## Contributing
 
-This project emphasizes:
+Contributions are welcome.
 
-- Reusable code
-- Statistical rigor
-- Documentation
-- Transparency
-- Research-first development
+Please open an issue before submitting large changes.
 
 ---
 
 ## License
 
-MIT
+MIT License
