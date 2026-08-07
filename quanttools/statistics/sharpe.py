@@ -70,7 +70,8 @@ def sharpe_ratio(
 
     mean_return = excess_returns.mean()
 
-    volatility = excess_returns.std(ddof=1)    
+    volatility = excess_returns.std(ddof=1) 
+       
     # Step 4: Validate volatility
 
     if volatility == 0:
