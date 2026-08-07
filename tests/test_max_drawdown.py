@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from quanttools.statistics.max_drawdown import max_drawdown
+from quanttools.statistics.drawdown import max_drawdown
 
 
 def test_max_drawdown_returns_correct_value():

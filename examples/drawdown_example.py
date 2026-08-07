@@ -1,6 +1,6 @@
 import pandas as pd
 
-from quanttools.statistics.max_drawdown import drawdown_series
+from quanttools.statistics.drawdown import drawdown_series
 
 returns = pd.Series(
     [
