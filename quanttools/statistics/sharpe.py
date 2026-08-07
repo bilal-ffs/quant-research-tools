@@ -38,7 +38,7 @@ def sharpe_ratio(
     float
         Annualized Sharpe Ratio.
     """
-    
+
     # Step 1: Validate input
 
     if not isinstance(returns, pd.Series):
@@ -57,3 +57,12 @@ def sharpe_ratio(
         raise ValueError(
             "returns contains only missing values."
         )
+    # Step 2: Compute excess returns
+
+    periodic_risk_free_rate = (
+        risk_free_rate / periods_per_year
+    )
+
+    excess_returns = (
+        returns - periodic_risk_free_rate
+    )
