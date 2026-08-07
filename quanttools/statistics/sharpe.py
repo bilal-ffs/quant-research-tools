@@ -66,3 +66,8 @@ def sharpe_ratio(
     excess_returns = (
         returns - periodic_risk_free_rate
     )
+    # Step 3: Compute mean return and volatility
+
+    mean_return = excess_returns.mean()
+
+    volatility = excess_returns.std(ddof=1)    
