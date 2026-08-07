@@ -89,3 +89,13 @@ def sortino_ratio(
         raise ValueError(
             "downside deviation is zero."
         )
+
+    # Step 6: Compute annualized Sortino Ratio
+
+    mean_return = excess_returns.mean()
+
+    sortino = (
+        mean_return / downside_deviation
+    ) * (periods_per_year ** 0.5)
+
+    return float(sortino)
