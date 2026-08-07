@@ -137,12 +137,31 @@ def drawdown_duration(
     Parameters
     ----------
     returns : pandas.Series
-        Periodic returns.
+        Periodic returns expressed as decimal values.
 
     Returns
     -------
     int
-        Maximum number of consecutive periods spent below the previous equity peak.
+        Maximum number of consecutive periods spent below the
+        previous equity peak.
+
+    Raises
+    ------
+    TypeError
+        If returns is not a pandas Series.
+
+    ValueError
+        If returns is empty.
+
+    Examples
+    --------
+    >>> drawdown_duration(returns)
+    15
+
+    Notes
+    -----
+    A drawdown period begins when the equity curve falls below
+    its previous peak and ends once a new peak is reached.
     """
     raise NotImplementedError
 
