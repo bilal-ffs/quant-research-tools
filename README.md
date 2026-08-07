@@ -77,24 +77,9 @@ quant-research-tools/
 
 ---
 
-## Roadmap
+## Current Version
 
-### Version 0.1.0
-
-- Drawdown Series
-- Maximum Drawdown
-- Drawdown Duration
-
-### Version 0.2.0
-
-- Sharpe Ratio
-- Sortino Ratio
-- Calmar Ratio
-
-### Version 0.3.0
-
-- Risk Analytics
-- Portfolio Metrics
+**Latest Release:** v0.3.0
 
 ---
 
