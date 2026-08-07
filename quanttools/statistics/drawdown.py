@@ -163,7 +163,18 @@ def drawdown_duration(
     A drawdown period begins when the equity curve falls below
     its previous peak and ends once a new peak is reached.
     """
-    raise NotImplementedError
+      # Step 1: Compute drawdown series
+
+    drawdown = drawdown_series(returns)
+
+    # Step 2: Initialize counters
+
+    longest_duration = 0
+    current_duration = 0
+
+    # Step 3: Iterate through the drawdown series
+
+    # Step 4: Return the longest duration
 
 def recovery_time(
     returns: pd.Series,
