@@ -14,6 +14,11 @@ from __future__ import annotations
 import pandas as pd
 
 
+from quanttools.utils.validation import (
+    validate_returns,
+)
+
+
 def sharpe_ratio(
     returns: pd.Series,
     risk_free_rate: float = 0.0,
@@ -41,22 +46,9 @@ def sharpe_ratio(
 
     # Step 1: Validate input
 
-    if not isinstance(returns, pd.Series):
-        raise TypeError(
-            "returns must be a pandas Series."
-        )
-
-    if returns.empty:
-        raise ValueError(
-            "returns cannot be empty."
-        )
-
-    returns = returns.dropna()
-
-    if returns.empty:
-        raise ValueError(
-            "returns contains only missing values."
-        )
+    returns = validate_returns(
+    returns
+    )
     # Step 2: Compute excess returns
 
     periodic_risk_free_rate = (
