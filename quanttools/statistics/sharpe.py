@@ -77,3 +77,10 @@ def sharpe_ratio(
         raise ValueError(
             "standard deviation is zero."
         )    
+    # Step 5: Compute annualized Sharpe Ratio
+
+    sharpe = (
+        mean_return / volatility
+    ) * (periods_per_year ** 0.5)
+
+    return float(sharpe)
