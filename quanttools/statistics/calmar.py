@@ -57,3 +57,9 @@ def calmar_ratio(
     drawdown = max_drawdown(
         returns
     )
+    # Step 4: Validate drawdown
+
+    if drawdown == 0:
+        raise ValueError(
+            "maximum drawdown is zero."
+        )
