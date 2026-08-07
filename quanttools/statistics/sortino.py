@@ -41,44 +41,44 @@ def sortino_ratio(
 
     # Step 1: Validate input
 
-        if not isinstance(returns, pd.Series):
-            raise TypeError(
-                "returns must be a pandas Series."
-            )
+    if not isinstance(returns, pd.Series):
+        raise TypeError(
+            "returns must be a pandas Series."
+        )
 
-        if returns.empty:
-            raise ValueError(
-                "returns cannot be empty."
-            )
+    if returns.empty:
+        raise ValueError(
+            "returns cannot be empty."
+        )
 
-        returns = returns.dropna()
+    returns = returns.dropna()
 
-        if returns.empty:
-            raise ValueError(
-                "returns contains only missing values."
-            )
+    if returns.empty:
+        raise ValueError(
+            "returns contains only missing values."
+        )
         
     # Step 2: Compute excess returns
 
-        periodic_risk_free_rate = (
-            risk_free_rate / periods_per_year
-        )
+    periodic_risk_free_rate = (
+        risk_free_rate / periods_per_year
+    )
 
-        excess_returns = (
-            returns - periodic_risk_free_rate
-        )
+    excess_returns = (
+        returns - periodic_risk_free_rate
+    )
 
     # Step 3: Keep only downside returns
 
-        downside_returns = excess_returns[
-            excess_returns < 0
-        ]
+    downside_returns = excess_returns[
+        excess_returns < 0
+    ]
 
     # Step 4: Compute downside deviation
 
-        downside_deviation = downside_returns.std(
-            ddof=1
-        )
+    downside_deviation = downside_returns.std(
+        ddof=1
+    )
     # Step 5: Validate downside deviation
 
     if (
