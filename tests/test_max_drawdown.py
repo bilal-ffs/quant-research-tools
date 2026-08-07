@@ -1,7 +1,12 @@
 import pandas as pd
 import pytest
 
-from quanttools.statistics.drawdown import max_drawdown
+from quanttools.statistics.drawdown import (
+max_drawdown,
+drawdown_duration,
+drawdown_series,
+)
+    
 
 
 def test_max_drawdown_returns_correct_value():
@@ -45,3 +50,18 @@ def test_series_with_nan_values():
     result = max_drawdown(returns)
 
     assert isinstance(result, float)
+
+def test_drawdown_duration():
+    returns = pd.Series(
+        [
+            0.10,
+            -0.20,
+            0.05,
+            -0.10,
+            0.15,
+        ]
+    )
+
+    result = drawdown_duration(returns)
+
+    assert result == 4

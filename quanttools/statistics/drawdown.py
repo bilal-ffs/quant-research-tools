@@ -184,7 +184,14 @@ def drawdown_duration(
             )
             current_duration = 0
 
-    # Step 4: Return the longest duration
+    # Step 4: Handle drawdowns that continue until the final observation
+
+    longest_duration = max(
+        longest_duration,
+        current_duration,
+    )
+
+    return longest_duration
 
 def recovery_time(
     returns: pd.Series,
