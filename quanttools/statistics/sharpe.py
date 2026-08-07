@@ -38,4 +38,22 @@ def sharpe_ratio(
     float
         Annualized Sharpe Ratio.
     """
-    raise NotImplementedError
+    
+    # Step 1: Validate input
+
+    if not isinstance(returns, pd.Series):
+        raise TypeError(
+            "returns must be a pandas Series."
+        )
+
+    if returns.empty:
+        raise ValueError(
+            "returns cannot be empty."
+        )
+
+    returns = returns.dropna()
+
+    if returns.empty:
+        raise ValueError(
+            "returns contains only missing values."
+        )
