@@ -174,6 +174,16 @@ def drawdown_duration(
 
     # Step 3: Iterate through the drawdown series
 
+    for value in drawdown:
+        if value < 0:
+            current_duration += 1
+        else:
+            longest_duration = max(
+                longest_duration,
+                current_duration,
+            )
+            current_duration = 0
+
     # Step 4: Return the longest duration
 
 def recovery_time(
