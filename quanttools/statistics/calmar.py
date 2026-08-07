@@ -46,3 +46,10 @@ def calmar_ratio(
     returns = validate_returns(
         returns
     )
+    # Step 2: Compute CAGR
+
+    growth = cagr(
+        returns,
+        periods_per_year=periods_per_year,
+    )
+    
