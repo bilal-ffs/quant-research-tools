@@ -63,3 +63,8 @@ def calmar_ratio(
         raise ValueError(
             "maximum drawdown is zero."
         )
+    # Step 5: Compute Calmar Ratio
+
+    calmar = growth / abs(drawdown)
+
+    return float(calmar)
