@@ -52,4 +52,8 @@ def calmar_ratio(
         returns,
         periods_per_year=periods_per_year,
     )
-    
+    # Step 3: Compute maximum drawdown
+
+    drawdown = max_drawdown(
+        returns
+    )
