@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/banner.png" width="100%">
+</p>
+
 # Quant Research Tools
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
