@@ -26,6 +26,11 @@ from __future__ import annotations
 
 import pandas as pd
 
+from quanttools.utils.validation import (
+    validate_returns,
+)
+
+
 def drawdown_series(
     returns: pd.Series,
 ) -> pd.Series:
@@ -59,37 +64,21 @@ def drawdown_series(
     Drawdown is measured relative to the running equity peak.
     """
     # Step 1: Validate input
+    returns = validate_returns(
+    returns
+    )
 
-    if not isinstance(returns, pd.Series):
-        raise TypeError(
-            "returns must be a pandas Series."
-        )
-
-    if returns.empty:
-        raise ValueError(
-            "returns cannot be empty."
-        )
-
-    # Step 2: Remove missing values
-
-    returns = returns.dropna()
-
-    if returns.empty:
-        raise ValueError(
-            "returns contains only missing values."
-        )
-
-    # Step 3: Compute cumulative equity curve
+    # Step 2: Compute cumulative equity curve
 
     growth_factor = 1 + returns
 
     equity_curve = growth_factor.cumprod()
 
-    # Step 4: Compute running equity peak
+    # Step 3: Compute running equity peak
 
     running_peak = equity_curve.cummax()
 
-    # Step 5: Compute drawdown series
+    # Step 4: Compute drawdown series
 
     drawdown = (equity_curve / running_peak) - 1
 

@@ -13,6 +13,10 @@ from __future__ import annotations
 
 import pandas as pd
 
+from quanttools.utils.validation import (
+    validate_returns,
+)
+
 
 def sortino_ratio(
     returns: pd.Series,
@@ -41,22 +45,9 @@ def sortino_ratio(
 
     # Step 1: Validate input
 
-    if not isinstance(returns, pd.Series):
-        raise TypeError(
-            "returns must be a pandas Series."
-        )
-
-    if returns.empty:
-        raise ValueError(
-            "returns cannot be empty."
-        )
-
-    returns = returns.dropna()
-
-    if returns.empty:
-        raise ValueError(
-            "returns contains only missing values."
-        )
+    returns = validate_returns(
+    returns
+)
         
     # Step 2: Compute excess returns
 
