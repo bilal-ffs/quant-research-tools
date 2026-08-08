@@ -13,14 +13,6 @@ from __future__ import annotations
 
 import pandas as pd
 
-from quanttools.utils.trades import (
-    split_trades,
-)
-
-from quanttools.utils.validation import (
-    validate_trade_results,
-)
-
 
 def win_rate(
     trade_results: pd.Series,
@@ -38,4 +30,17 @@ def win_rate(
     float
         Winning trade rate expressed as a decimal.
     """
-    raise NotImplementedError
+
+    # Step 1: Validate input
+
+    trade_results = validate_trade_results(trade_results)
+
+    # Step 2: Separate winning and losing trades
+
+    winning_trades, _ = split_trades(trade_results)
+
+    # Step 3: Compute win rate
+
+    rate = len(winning_trades) / len(trade_results)
+
+    return float(rate)
