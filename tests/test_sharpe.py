@@ -64,6 +64,7 @@ def test_zero_volatility():
     with pytest.raises(ValueError):
         sharpe_ratio(returns)
 
+
 def test_risk_free_rate_changes_result():
     returns = pd.Series(
         [
@@ -85,6 +86,7 @@ def test_risk_free_rate_changes_result():
     )
 
     assert sharpe_with_rf < sharpe_no_rf
+
 
 def test_periods_per_year_changes_result():
     returns = pd.Series(

@@ -54,39 +54,25 @@ def profit_factor(
 
     # Step 1: Validate input
 
-    trade_results = validate_trade_results(
-        trade_results
-    )
+    trade_results = validate_trade_results(trade_results)
 
     # Step 2: Separate winning and losing trades
 
-    winning_trades, losing_trades = (
-        split_trades(
-            trade_results
-        )
-    )
+    winning_trades, losing_trades = split_trades(trade_results)
 
     # Step 3: Compute gross profit and gross loss
 
     gross_profit = winning_trades.sum()
 
-    gross_loss = abs(
-        losing_trades.sum()
-    )
+    gross_loss = abs(losing_trades.sum())
 
     # Step 4: Validate gross loss
 
     if gross_loss == 0:
-        raise ValueError(
-            "gross loss is zero."
-        )
+        raise ValueError("gross loss is zero.")
 
     # Step 5: Compute Profit Factor
 
-    profit_factor = (
-        gross_profit / gross_loss
-    )
+    profit_factor = gross_profit / gross_loss
 
-    return float(
-        profit_factor
-    )
+    return float(profit_factor)

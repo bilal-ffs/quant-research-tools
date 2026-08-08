@@ -2,11 +2,10 @@ import pandas as pd
 import pytest
 
 from quanttools.statistics.drawdown import (
-max_drawdown,
-drawdown_duration,
-drawdown_series,
+    max_drawdown,
+    drawdown_duration,
+    drawdown_series,
 )
-    
 
 
 def test_max_drawdown_returns_correct_value():
@@ -22,11 +21,13 @@ def test_max_drawdown_returns_correct_value():
 
     assert result == pytest.approx(-0.20)
 
+
 def test_empty_series():
     returns = pd.Series(dtype=float)
 
     with pytest.raises(ValueError):
-        max_drawdown(returns)    
+        max_drawdown(returns)
+
 
 def test_invalid_input_type():
     with pytest.raises(TypeError):
@@ -37,6 +38,8 @@ def test_invalid_input_type():
                 0.05,
             ]
         )
+
+
 def test_series_with_nan_values():
     returns = pd.Series(
         [
@@ -50,6 +53,7 @@ def test_series_with_nan_values():
     result = max_drawdown(returns)
 
     assert isinstance(result, float)
+
 
 def test_drawdown_duration():
     returns = pd.Series(

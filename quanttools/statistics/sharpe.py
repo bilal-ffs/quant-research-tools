@@ -46,34 +46,24 @@ def sharpe_ratio(
 
     # Step 1: Validate input
 
-    returns = validate_returns(
-    returns
-    )
+    returns = validate_returns(returns)
     # Step 2: Compute excess returns
 
-    periodic_risk_free_rate = (
-        risk_free_rate / periods_per_year
-    )
+    periodic_risk_free_rate = risk_free_rate / periods_per_year
 
-    excess_returns = (
-        returns - periodic_risk_free_rate
-    )
+    excess_returns = returns - periodic_risk_free_rate
     # Step 3: Compute mean return and volatility
 
     mean_return = excess_returns.mean()
 
-    volatility = excess_returns.std(ddof=1) 
-       
+    volatility = excess_returns.std(ddof=1)
+
     # Step 4: Validate volatility
 
     if volatility == 0:
-        raise ValueError(
-            "standard deviation is zero."
-        )    
+        raise ValueError("standard deviation is zero.")
     # Step 5: Compute annualized Sharpe Ratio
 
-    sharpe = (
-        mean_return / volatility
-    ) * (periods_per_year ** 0.5)
+    sharpe = (mean_return / volatility) * (periods_per_year**0.5)
 
     return float(sharpe)

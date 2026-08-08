@@ -41,16 +41,12 @@ def cagr(
 
     # Step 1: Validate input
 
-    returns = validate_returns(
-        returns
-    )
+    returns = validate_returns(returns)
     # Step 2: Compute cumulative equity curve
 
     growth_factor = 1 + returns
 
-    equity_curve = growth_factor.cumprod(
-
-    )
+    equity_curve = growth_factor.cumprod()
     # Step 3: Compute investment duration
 
     periods = len(returns)
@@ -61,8 +57,6 @@ def cagr(
 
     ending_value = equity_curve.iloc[-1]
 
-    cagr = (
-        ending_value ** (1 / years)
-    ) - 1
+    cagr = (ending_value ** (1 / years)) - 1
 
     return float(cagr)

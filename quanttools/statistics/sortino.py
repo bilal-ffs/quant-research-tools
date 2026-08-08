@@ -45,48 +45,30 @@ def sortino_ratio(
 
     # Step 1: Validate input
 
-    returns = validate_returns(
-    returns
-)
-        
+    returns = validate_returns(returns)
+
     # Step 2: Compute excess returns
 
-    periodic_risk_free_rate = (
-        risk_free_rate / periods_per_year
-    )
+    periodic_risk_free_rate = risk_free_rate / periods_per_year
 
-    excess_returns = (
-        returns - periodic_risk_free_rate
-    )
+    excess_returns = returns - periodic_risk_free_rate
 
     # Step 3: Keep only downside returns
 
-    downside_returns = excess_returns[
-        excess_returns < 0
-    ]
+    downside_returns = excess_returns[excess_returns < 0]
 
     # Step 4: Compute downside deviation
 
-    downside_deviation = downside_returns.std(
-        ddof=1
-    )
+    downside_deviation = downside_returns.std(ddof=1)
     # Step 5: Validate downside deviation
 
-    if (
-        downside_returns.empty
-        or pd.isna(downside_deviation)
-        or downside_deviation == 0
-    ):
-        raise ValueError(
-            "downside deviation is zero."
-        )
+    if downside_returns.empty or pd.isna(downside_deviation) or downside_deviation == 0:
+        raise ValueError("downside deviation is zero.")
 
     # Step 6: Compute annualized Sortino Ratio
 
     mean_return = excess_returns.mean()
 
-    sortino = (
-        mean_return / downside_deviation
-    ) * (periods_per_year ** 0.5)
+    sortino = (mean_return / downside_deviation) * (periods_per_year**0.5)
 
     return float(sortino)

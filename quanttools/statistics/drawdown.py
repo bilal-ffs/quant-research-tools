@@ -64,9 +64,7 @@ def drawdown_series(
     Drawdown is measured relative to the running equity peak.
     """
     # Step 1: Validate input
-    returns = validate_returns(
-    returns
-    )
+    returns = validate_returns(returns)
 
     # Step 2: Compute cumulative equity curve
 
@@ -83,6 +81,7 @@ def drawdown_series(
     drawdown = (equity_curve / running_peak) - 1
 
     return drawdown
+
 
 def max_drawdown(
     returns: pd.Series,
@@ -116,6 +115,7 @@ def max_drawdown(
     drawdown = drawdown_series(returns)
 
     return float(drawdown.min())
+
 
 def drawdown_duration(
     returns: pd.Series,
@@ -152,7 +152,7 @@ def drawdown_duration(
     A drawdown period begins when the equity curve falls below
     its previous peak and ends once a new peak is reached.
     """
-      # Step 1: Compute drawdown series
+    # Step 1: Compute drawdown series
 
     drawdown = drawdown_series(returns)
 
@@ -182,6 +182,7 @@ def drawdown_duration(
 
     return longest_duration
 
+
 def recovery_time(
     returns: pd.Series,
 ) -> int:
@@ -199,4 +200,3 @@ def recovery_time(
         Number of periods required to recover from the maximum drawdown.
     """
     raise NotImplementedError
-

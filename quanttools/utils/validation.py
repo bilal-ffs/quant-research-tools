@@ -36,23 +36,18 @@ def validate_returns(
     """
 
     if not isinstance(returns, pd.Series):
-        raise TypeError(
-            "returns must be a pandas Series."
-        )
+        raise TypeError("returns must be a pandas Series.")
 
     if returns.empty:
-        raise ValueError(
-            "returns cannot be empty."
-        )
+        raise ValueError("returns cannot be empty.")
 
     returns = returns.dropna()
 
     if returns.empty:
-        raise ValueError(
-            "returns contains only missing values."
-        )
+        raise ValueError("returns contains only missing values.")
 
     return returns
+
 
 def validate_trade_results(
     trade_results: pd.Series,
@@ -83,20 +78,14 @@ def validate_trade_results(
         trade_results,
         pd.Series,
     ):
-        raise TypeError(
-            "trade_results must be a pandas Series."
-        )
+        raise TypeError("trade_results must be a pandas Series.")
 
     if trade_results.empty:
-        raise ValueError(
-            "trade_results cannot be empty."
-        )
+        raise ValueError("trade_results cannot be empty.")
 
     trade_results = trade_results.dropna()
 
     if trade_results.empty:
-        raise ValueError(
-            "trade_results contains only missing values."
-        )
+        raise ValueError("trade_results contains only missing values.")
 
     return trade_results

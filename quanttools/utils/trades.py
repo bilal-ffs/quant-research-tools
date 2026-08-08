@@ -27,13 +27,9 @@ def split_trades(
         Winning trades and losing trades.
     """
 
-    winning_trades = trade_results[
-        trade_results > 0
-    ]
+    winning_trades = trade_results[trade_results > 0]
 
-    losing_trades = trade_results[
-        trade_results < 0
-    ]
+    losing_trades = trade_results[trade_results < 0]
 
     return (
         winning_trades,

@@ -3,6 +3,7 @@ import pytest
 
 from quanttools.statistics.sortino import sortino_ratio
 
+
 def test_sortino_returns_float():
     returns = pd.Series(
         [
@@ -41,8 +42,8 @@ def test_nan_values():
         [
             0.01,
             None,
-           -0.02,
-           -0.01,
+            -0.02,
+            -0.01,
             0.02,
         ]
     )
@@ -65,11 +66,12 @@ def test_zero_volatility():
     with pytest.raises(ValueError):
         sortino_ratio(returns)
 
+
 def test_risk_free_rate_changes_result():
     returns = pd.Series(
         [
             0.01,
-           -0.02,
+            -0.02,
             -0.01,
             0.015,
         ]
@@ -87,13 +89,14 @@ def test_risk_free_rate_changes_result():
 
     assert sortino_with_rf < sortino_no_rf
 
+
 def test_periods_per_year_changes_result():
     returns = pd.Series(
         [
             0.01,
             -0.01,
             0.02,
-           -0.015,
+            -0.015,
         ]
     )
 

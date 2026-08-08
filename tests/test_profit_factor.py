@@ -50,9 +50,7 @@ def test_nan_values():
         ]
     )
 
-    result = profit_factor(
-        trade_results
-    )
+    result = profit_factor(trade_results)
 
     assert isinstance(result, float)
 
@@ -67,9 +65,7 @@ def test_zero_gross_loss():
     )
 
     with pytest.raises(ValueError):
-        profit_factor(
-            trade_results
-        )
+        profit_factor(trade_results)
 
 
 def test_positive_profit_factor():
@@ -82,9 +78,7 @@ def test_positive_profit_factor():
         ]
     )
 
-    result = profit_factor(
-        trade_results
-    )
+    result = profit_factor(trade_results)
 
     assert result > 1
 
@@ -99,8 +93,6 @@ def test_loss_greater_than_profit():
         ]
     )
 
-    result = profit_factor(
-        trade_results
-    )
+    result = profit_factor(trade_results)
 
     assert result < 1

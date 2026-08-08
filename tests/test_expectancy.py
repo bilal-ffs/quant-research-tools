@@ -17,9 +17,7 @@ def test_expectancy_returns_float():
         ]
     )
 
-    result = expectancy(
-        trade_results
-    )
+    result = expectancy(trade_results)
 
     assert isinstance(result, float)
 
@@ -52,9 +50,7 @@ def test_nan_values():
         ]
     )
 
-    result = expectancy(
-        trade_results
-    )
+    result = expectancy(trade_results)
 
     assert isinstance(result, float)
 
@@ -69,9 +65,7 @@ def test_no_winning_trades():
     )
 
     with pytest.raises(ValueError):
-        expectancy(
-            trade_results
-        )
+        expectancy(trade_results)
 
 
 def test_no_losing_trades():
@@ -84,9 +78,7 @@ def test_no_losing_trades():
     )
 
     with pytest.raises(ValueError):
-        expectancy(
-            trade_results
-        )
+        expectancy(trade_results)
 
 
 def test_positive_expectancy():
@@ -100,8 +92,6 @@ def test_positive_expectancy():
         ]
     )
 
-    result = expectancy(
-        trade_results
-    )
+    result = expectancy(trade_results)
 
     assert result > 0

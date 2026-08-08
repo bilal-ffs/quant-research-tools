@@ -43,9 +43,7 @@ def calmar_ratio(
     """
     # Step 1: Validate input
 
-    returns = validate_returns(
-        returns
-    )
+    returns = validate_returns(returns)
     # Step 2: Compute CAGR
 
     growth = cagr(
@@ -54,15 +52,11 @@ def calmar_ratio(
     )
     # Step 3: Compute maximum drawdown
 
-    drawdown = max_drawdown(
-        returns
-    )
+    drawdown = max_drawdown(returns)
     # Step 4: Validate drawdown
 
     if drawdown == 0:
-        raise ValueError(
-            "maximum drawdown is zero."
-        )
+        raise ValueError("maximum drawdown is zero.")
     # Step 5: Compute Calmar Ratio
 
     calmar = growth / abs(drawdown)
