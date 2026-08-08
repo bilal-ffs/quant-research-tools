@@ -9,6 +9,20 @@ from __future__ import annotations
 
 import pandas as pd
 
+from quanttools.statistics import (
+    average_loss,
+    average_win,
+    cagr,
+    calmar_ratio,
+    drawdown_duration,
+    expectancy,
+    max_drawdown,
+    payoff_ratio,
+    profit_factor,
+    sharpe_ratio,
+    sortino_ratio,
+    win_rate,
+)
 
 def performance_report(
     returns: pd.Series,
@@ -30,4 +44,60 @@ def performance_report(
     str
         Formatted performance report.
     """
-    raise NotImplementedError
+
+    # Performance
+
+    cagr_value = cagr(returns)
+
+    sharpe = sharpe_ratio(returns)
+
+    sortino = sortino_ratio(returns)
+
+    calmar = calmar_ratio(returns)
+
+    # Risk
+
+    max_dd = max_drawdown(returns)
+
+    dd_duration = drawdown_duration(returns)
+
+    # Trade Analytics
+
+    pf = profit_factor(trade_results)
+
+    exp = expectancy(trade_results)
+
+    wr = win_rate(trade_results)
+
+    avg_win = average_win(trade_results)
+
+    avg_loss = average_loss(trade_results)
+
+    payoff = payoff_ratio(trade_results)
+
+    return f"""
+    ==========================================
+        QuantTools Performance Report
+    ==========================================
+
+    Performance
+    ------------------------------------------
+    CAGR               {cagr_value:.2%}
+    Sharpe Ratio       {sharpe:.2f}
+    Sortino Ratio      {sortino:.2f}
+    Calmar Ratio       {calmar:.2f}
+
+    Risk
+    ------------------------------------------
+    Maximum Drawdown   {max_dd:.2%}
+    Drawdown Duration  {dd_duration}
+
+    Trade Analytics
+    ------------------------------------------
+    Profit Factor      {pf:.2f}
+    Expectancy         {exp:.2f}
+    Win Rate           {wr:.2%}
+    Average Win        {avg_win:.2f}
+    Average Loss       {avg_loss:.2f}
+    Payoff Ratio       {payoff:.2f}
+    """
