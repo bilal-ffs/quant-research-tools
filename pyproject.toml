@@ -12,3 +12,17 @@ license = { text = "MIT" }
 
 [tool.setuptools.packages.find]
 include = ["quanttools*"]
+
+[tool.black]
+line-length = 88
+target-version = ["py313"]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+]
