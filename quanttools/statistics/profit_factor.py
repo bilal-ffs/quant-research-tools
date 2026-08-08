@@ -1,3 +1,19 @@
+"""
+quanttools.statistics.profit_factor
+==================================
+
+Functions for calculating Profit Factor.
+
+References
+----------
+Van K. Tharp
+"""
+
+from __future__ import annotations
+
+import pandas as pd
+
+
 def profit_factor(
     trade_results: pd.Series,
 ) -> float:
