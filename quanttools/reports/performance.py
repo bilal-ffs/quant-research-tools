@@ -24,6 +24,7 @@ from quanttools.statistics import (
     win_rate,
 )
 
+
 def performance_report(
     returns: pd.Series,
     trade_results: pd.Series,
@@ -76,28 +77,30 @@ def performance_report(
     payoff = payoff_ratio(trade_results)
 
     return f"""
-    ==========================================
-        QuantTools Performance Report
-    ==========================================
+    ==================================================
+            QuantTools Performance Report
+    ==================================================
 
-    Performance
-    ------------------------------------------
-    CAGR               {cagr_value:.2%}
-    Sharpe Ratio       {sharpe:.2f}
-    Sortino Ratio      {sortino:.2f}
-    Calmar Ratio       {calmar:.2f}
+    Performance Metrics
+    --------------------------------------------------
+    CAGR                     {cagr_value:>10.2%}
+    Sharpe Ratio             {sharpe:>10.2f}
+    Sortino Ratio            {sortino:>10.2f}
+    Calmar Ratio             {calmar:>10.2f}
 
-    Risk
-    ------------------------------------------
-    Maximum Drawdown   {max_dd:.2%}
-    Drawdown Duration  {dd_duration}
+    Risk Metrics
+    --------------------------------------------------
+    Maximum Drawdown         {max_dd:>10.2%}
+    Drawdown Duration        {dd_duration:>10}
 
     Trade Analytics
-    ------------------------------------------
-    Profit Factor      {pf:.2f}
-    Expectancy         {exp:.2f}
-    Win Rate           {wr:.2%}
-    Average Win        {avg_win:.2f}
-    Average Loss       {avg_loss:.2f}
-    Payoff Ratio       {payoff:.2f}
+    --------------------------------------------------
+    Profit Factor            {pf:>10.2f}
+    Expectancy               {exp:>10.2f}
+    Win Rate                 {wr:>10.2%}
+    Average Win              {avg_win:>10.2f}
+    Average Loss             {avg_loss:>10.2f}
+    Payoff Ratio             {payoff:>10.2f}
+
+    ==================================================
     """
