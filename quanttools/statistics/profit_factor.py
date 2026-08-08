@@ -13,6 +13,14 @@ from __future__ import annotations
 
 import pandas as pd
 
+from quanttools.utils.validation import (
+    validate_trade_results,
+)
+
+from quanttools.utils.trades import (
+    split_trades,
+)
+
 
 def profit_factor(
     trade_results: pd.Series,
@@ -46,35 +54,17 @@ def profit_factor(
 
     # Step 1: Validate input
 
-    if not isinstance(
-        trade_results,
-        pd.Series,
-    ):
-        raise TypeError(
-            "trade_results must be a pandas Series."
-        )
-
-    if trade_results.empty:
-        raise ValueError(
-            "trade_results cannot be empty."
-        )
-
-    trade_results = trade_results.dropna()
-
-    if trade_results.empty:
-        raise ValueError(
-            "trade_results contains only missing values."
-        )
+    trade_results = validate_trade_results(
+        trade_results
+    )
 
     # Step 2: Separate winning and losing trades
 
-    winning_trades = trade_results[
-        trade_results > 0
-    ]
-
-    losing_trades = trade_results[
-        trade_results < 0
-    ]
+    winning_trades, losing_trades = (
+        split_trades(
+            trade_results
+        )
+    )
 
     # Step 3: Compute gross profit and gross loss
 
