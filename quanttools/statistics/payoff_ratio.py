@@ -16,7 +16,6 @@ import pandas as pd
 from quanttools.statistics.average_loss import (
     average_loss,
 )
-
 from quanttools.statistics.average_win import (
     average_win,
 )
@@ -42,18 +41,12 @@ def payoff_ratio(
 
     # Step 1: Compute average winning trade
 
-    avg_win = average_win(
-        trade_results
-    )
+    avg_win = average_win(trade_results)
 
     # Step 2: Compute average losing trade
 
-    avg_loss = average_loss(
-        trade_results
-    )
+    avg_loss = average_loss(trade_results)
 
     # Step 3: Compute payoff ratio
 
-    return float(
-        avg_win / avg_loss
-    )
+    return float(avg_win / avg_loss)

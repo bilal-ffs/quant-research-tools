@@ -16,9 +16,7 @@ def test_payoff_ratio_returns_float():
         ]
     )
 
-    result = payoff_ratio(
-        trade_results
-    )
+    result = payoff_ratio(trade_results)
 
     assert isinstance(result, float)
 
@@ -27,9 +25,7 @@ def test_empty_series():
     trade_results = pd.Series(dtype=float)
 
     with pytest.raises(ValueError):
-        payoff_ratio(
-            trade_results
-        )
+        payoff_ratio(trade_results)
 
 
 def test_invalid_input_type():
@@ -52,9 +48,7 @@ def test_nan_values():
         ]
     )
 
-    result = payoff_ratio(
-        trade_results
-    )
+    result = payoff_ratio(trade_results)
 
     assert isinstance(result, float)
 
@@ -68,9 +62,7 @@ def test_no_winning_trades():
     )
 
     with pytest.raises(ValueError):
-        payoff_ratio(
-            trade_results
-        )
+        payoff_ratio(trade_results)
 
 
 def test_no_losing_trades():
@@ -82,9 +74,7 @@ def test_no_losing_trades():
     )
 
     with pytest.raises(ValueError):
-        payoff_ratio(
-            trade_results
-        )
+        payoff_ratio(trade_results)
 
 
 def test_payoff_ratio_calculation():
@@ -97,8 +87,6 @@ def test_payoff_ratio_calculation():
         ]
     )
 
-    result = payoff_ratio(
-        trade_results
-    )
+    result = payoff_ratio(trade_results)
 
     assert result == pytest.approx(1.0)

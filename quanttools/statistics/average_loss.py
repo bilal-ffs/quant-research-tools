@@ -16,7 +16,6 @@ import pandas as pd
 from quanttools.utils.trades import (
     split_trades,
 )
-
 from quanttools.utils.validation import (
     validate_trade_results,
 )
@@ -52,27 +51,17 @@ def average_loss(
 
     # Step 1: Validate input
 
-    trade_results = validate_trade_results(
-        trade_results
-    )
+    trade_results = validate_trade_results(trade_results)
 
     # Step 2: Separate winning and losing trades
 
-    _, losing_trades = split_trades(
-        trade_results
-    )
+    _, losing_trades = split_trades(trade_results)
 
     # Step 3: Validate losing trades
 
     if losing_trades.empty:
-        raise ValueError(
-            "no losing trades."
-        )
+        raise ValueError("no losing trades.")
 
     # Step 4: Compute average losing trade
 
-    return float(
-        abs(
-            losing_trades.mean()
-        )
-    )
+    return float(abs(losing_trades.mean()))

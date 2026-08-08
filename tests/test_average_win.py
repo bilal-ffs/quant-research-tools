@@ -17,9 +17,7 @@ def test_average_win_returns_float():
         ]
     )
 
-    result = average_win(
-        trade_results
-    )
+    result = average_win(trade_results)
 
     assert isinstance(result, float)
 
@@ -28,9 +26,7 @@ def test_empty_series():
     trade_results = pd.Series(dtype=float)
 
     with pytest.raises(ValueError):
-        average_win(
-            trade_results
-        )
+        average_win(trade_results)
 
 
 def test_invalid_input_type():
@@ -54,9 +50,7 @@ def test_nan_values():
         ]
     )
 
-    result = average_win(
-        trade_results
-    )
+    result = average_win(trade_results)
 
     assert isinstance(result, float)
 
@@ -71,9 +65,7 @@ def test_no_winning_trades():
     )
 
     with pytest.raises(ValueError):
-        average_win(
-            trade_results
-        )
+        average_win(trade_results)
 
 
 def test_average_calculation():
@@ -86,9 +78,7 @@ def test_average_calculation():
         ]
     )
 
-    result = average_win(
-        trade_results
-    )
+    result = average_win(trade_results)
 
     assert result == pytest.approx(75.0)
 
@@ -102,8 +92,6 @@ def test_single_winning_trade():
         ]
     )
 
-    result = average_win(
-        trade_results
-    )
+    result = average_win(trade_results)
 
     assert result == pytest.approx(200.0)

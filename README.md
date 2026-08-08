@@ -6,36 +6,58 @@
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
+![Tests](https://img.shields.io/badge/Tests-76%20Passing-success)
 
 Open-source quantitative finance utilities for systematic trading, portfolio analytics, and financial research.
 
 ---
 
-## Features
+# Features
 
-### Statistics
+## Performance Metrics
 
 - ✅ Drawdown Series
 - ✅ Maximum Drawdown
 - ✅ Drawdown Duration
-- 🚧 Recovery Time
+- ✅ CAGR
+- ✅ Sharpe Ratio
+- ✅ Sortino Ratio
+- ✅ Calmar Ratio
 
-### Planned
+## Trade Analytics
 
-- Sharpe Ratio
-- Sortino Ratio
-- Calmar Ratio
-- Profit Factor
-- CAGR
+- ✅ Profit Factor
+- ✅ Expectancy
+- ✅ Win Rate
+- ✅ Average Win
+- ✅ Average Loss
+- ✅ Payoff Ratio
+
+## Planned
+
+### Performance Metrics
+
+- Recovery Factor
+- Recovery Time
 - Volatility
+
+### Risk Metrics
+
 - Value at Risk (VaR)
-- Conditional VaR
+- Conditional VaR (CVaR)
 - Beta
 - Alpha
 
+### Portfolio Analytics
+
+- Portfolio Return
+- Portfolio Volatility
+- Correlation Matrix
+- Covariance Matrix
+
 ---
 
-## Installation
+# Installation
 
 ```bash
 git clone https://github.com/bilal-ffs/quant-research-tools.git
@@ -47,7 +69,7 @@ pip install -e .
 
 ---
 
-## Running Tests
+# Running Tests
 
 ```bash
 pytest
@@ -55,9 +77,9 @@ pytest
 
 ---
 
-## Project Structure
+# Project Structure
 
-```
+```text
 quant-research-tools/
 │
 ├── quanttools/
@@ -65,8 +87,7 @@ quant-research-tools/
 │   ├── portfolio/
 │   ├── risk/
 │   ├── indicators/
-│   ├── utilities/
-│   ├── validation/
+│   ├── utils/
 │   └── visualization/
 │
 ├── tests/
@@ -77,20 +98,24 @@ quant-research-tools/
 
 ---
 
-## Current Version
+# Current Version
 
-**Latest Release:** v0.3.0
+**Latest Release:** v0.4.0
 
 ---
 
-## Contributing
+# Contributing
 
 Contributions are welcome.
 
-Please open an issue before submitting large changes.
+Before opening a pull request:
+
+- Run `ruff check . --fix`
+- Run `black .`
+- Run `pytest`
 
 ---
 
-## License
+# License
 
 MIT License
