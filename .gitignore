@@ -1,21 +1,25 @@
-# Python cache
+# Python
 __pycache__/
 *.py[cod]
-
-# Build artifacts
-*.egg-info/
-build/
-dist/
+*.pyo
 
 # Virtual environments
 .venv/
 venv/
 env/
 
-# Pytest
+# Test & lint caches
 .pytest_cache/
-
-# VS Code
-.vscode/
 .ruff_cache/
 .mypy_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# IDEs
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
