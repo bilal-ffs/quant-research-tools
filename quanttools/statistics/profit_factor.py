@@ -13,12 +13,11 @@ from __future__ import annotations
 
 import pandas as pd
 
-from quanttools.utils.validation import (
-    validate_trade_results,
-)
-
 from quanttools.utils.trades import (
     split_trades,
+)
+from quanttools.utils.validation import (
+    validate_trade_results,
 )
 
 

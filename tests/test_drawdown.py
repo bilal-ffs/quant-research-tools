@@ -2,9 +2,8 @@ import pandas as pd
 import pytest
 
 from quanttools.statistics.drawdown import (
-    max_drawdown,
     drawdown_duration,
-    drawdown_series,
+    max_drawdown,
 )
 
 

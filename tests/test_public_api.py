@@ -1,13 +1,13 @@
 from quanttools.statistics import (
-    drawdown_series,
-    max_drawdown,
-    drawdown_duration,
-    sharpe_ratio,
-    sortino_ratio,
     cagr,
     calmar_ratio,
-    profit_factor,
+    drawdown_duration,
+    drawdown_series,
     expectancy,
+    max_drawdown,
+    profit_factor,
+    sharpe_ratio,
+    sortino_ratio,
 )
 
 

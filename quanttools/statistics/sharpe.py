@@ -13,7 +13,6 @@ from __future__ import annotations
 
 import pandas as pd
 
-
 from quanttools.utils.validation import (
     validate_returns,
 )

@@ -2,34 +2,28 @@
 Statistical performance metrics.
 """
 
-from .drawdown import (
-    drawdown_series,
-    max_drawdown,
-    drawdown_duration,
-)
-
-from .sharpe import (
-    sharpe_ratio,
-)
-
-from .sortino import (
-    sortino_ratio,
-)
-
 from .cagr import (
     cagr,
 )
-
 from .calmar import (
     calmar_ratio,
 )
-
+from .drawdown import (
+    drawdown_duration,
+    drawdown_series,
+    max_drawdown,
+)
+from .expectancy import (
+    expectancy,
+)
 from .profit_factor import (
     profit_factor,
 )
-
-from .expectancy import (
-    expectancy,
+from .sharpe import (
+    sharpe_ratio,
+)
+from .sortino import (
+    sortino_ratio,
 )
 
 __all__ = [

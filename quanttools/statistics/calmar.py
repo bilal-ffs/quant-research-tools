@@ -15,7 +15,6 @@ import pandas as pd
 
 from quanttools.statistics.cagr import cagr
 from quanttools.statistics.drawdown import max_drawdown
-
 from quanttools.utils.validation import (
     validate_returns,
 )
