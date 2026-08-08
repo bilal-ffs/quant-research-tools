@@ -17,3 +17,5 @@ env/
 
 # VS Code
 .vscode/
+.ruff_cache/
+.mypy_cache/
