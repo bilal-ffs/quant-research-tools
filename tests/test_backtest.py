@@ -1,3 +1,5 @@
+import json
+
 import pandas as pd
 
 from quanttools import (
@@ -213,3 +215,36 @@ def test_to_dataframe_row_count():
     df = bt.to_dataframe()
 
     assert len(df) == len(bt.summary())
+
+
+def test_to_json_returns_string():
+    bt = create_backtest()
+
+    result = bt.to_json()
+
+    assert isinstance(
+        result,
+        str,
+    )
+
+
+def test_to_json_is_valid_json():
+    bt = create_backtest()
+
+    result = bt.to_json()
+
+    data = json.loads(result)
+
+    assert isinstance(
+        data,
+        dict,
+    )
+
+
+def test_to_json_contains_metrics():
+    bt = create_backtest()
+
+    data = json.loads(bt.to_json())
+
+    assert "sharpe_ratio" in data
+    assert "profit_factor" in data

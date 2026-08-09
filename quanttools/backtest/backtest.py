@@ -7,6 +7,8 @@ Backtest object for quantitative strategy analysis.
 
 from __future__ import annotations
 
+import json
+
 import pandas as pd
 
 from quanttools.reports import (
@@ -210,4 +212,19 @@ class Backtest:
                 "Metric",
                 "Value",
             ],
+        )
+
+    def to_json(self) -> str:
+        """
+        Return the backtest summary as JSON.
+
+        Returns
+        -------
+        str
+            Summary metrics in JSON format.
+        """
+
+        return json.dumps(
+            self.summary(),
+            indent=4,
         )
