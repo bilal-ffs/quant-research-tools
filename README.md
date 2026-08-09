@@ -33,6 +33,15 @@ Open-source quantitative finance utilities for systematic trading, portfolio ana
 - ✅ Average Loss
 - ✅ Payoff Ratio
 
+## Portfolio Analytics
+
+- ✅ Beta
+- ✅ Alpha
+- ✅ Active Return
+- ✅ Tracking Error
+- ✅ Information Ratio
+- ✅ Treynor Ratio
+
 ## Planned
 
 ### Performance Metrics
@@ -100,7 +109,7 @@ quant-research-tools/
 
 # Current Version
 
-**Latest Release:** v0.6.0
+**Latest Release:** v0.7.0
 
 ---
 
