@@ -2,6 +2,9 @@
 Portfolio analytics.
 """
 
+from .active_return import (
+    active_return,
+)
 from .alpha import (
     alpha,
 )
@@ -14,9 +17,7 @@ from .information_ratio import (
 from .tracking_error import (
     tracking_error,
 )
-from .active_return import (
-    active_return,
-)
+
 __all__ = [
     "beta",
     "alpha",

@@ -9,6 +9,10 @@ from __future__ import annotations
 
 import pandas as pd
 
+from quanttools.utils.validation import (
+    validate_return_pair,
+)
+
 
 def active_return(
     portfolio_returns: pd.Series,
@@ -30,3 +34,10 @@ def active_return(
     float
         Active return.
     """
+
+    portfolio_returns, benchmark_returns = validate_return_pair(
+        portfolio_returns,
+        benchmark_returns,
+    )
+
+    return float(portfolio_returns.mean() - benchmark_returns.mean())

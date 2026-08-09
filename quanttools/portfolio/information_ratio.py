@@ -31,6 +31,9 @@ def information_ratio(
         Information ratio.
     """
 
+    from quanttools.portfolio.active_return import (
+        active_return,
+    )
     from quanttools.portfolio.tracking_error import (
         tracking_error,
     )
@@ -42,8 +45,10 @@ def information_ratio(
         portfolio_returns,
         benchmark_returns,
     )
-
-    active_return = portfolio_returns.mean() - benchmark_returns.mean()
+    active = active_return(
+        portfolio_returns,
+        benchmark_returns,
+    )
 
     te = tracking_error(
         portfolio_returns,
@@ -53,4 +58,4 @@ def information_ratio(
     if te == 0:
         raise ValueError("tracking error is zero.")
 
-    return float(active_return / te)
+    return float(active / te)
