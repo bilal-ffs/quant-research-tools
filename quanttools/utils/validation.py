@@ -49,6 +49,55 @@ def validate_returns(
     return returns
 
 
+def validate_return_pair(
+    portfolio_returns: pd.Series,
+    benchmark_returns: pd.Series,
+) -> tuple[pd.Series, pd.Series]:
+    """
+    Validate two return series.
+
+    Parameters
+    ----------
+    portfolio_returns : pandas.Series
+        Portfolio periodic returns.
+
+    benchmark_returns : pandas.Series
+        Benchmark periodic returns.
+
+    Returns
+    -------
+    tuple[pandas.Series, pandas.Series]
+        Validated return series with missing values removed.
+
+    Raises
+    ------
+    TypeError
+        If either input is not a pandas Series.
+
+    ValueError
+        If either series is empty.
+
+    ValueError
+        If the series have different lengths.
+    """
+
+    portfolio_returns = validate_returns(
+        portfolio_returns,
+    )
+
+    benchmark_returns = validate_returns(
+        benchmark_returns,
+    )
+
+    if len(portfolio_returns) != len(benchmark_returns):
+        raise ValueError("return series must have the same length.")
+
+    return (
+        portfolio_returns,
+        benchmark_returns,
+    )
+
+
 def validate_trade_results(
     trade_results: pd.Series,
 ) -> pd.Series:
