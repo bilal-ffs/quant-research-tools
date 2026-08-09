@@ -17,6 +17,9 @@ from .information_ratio import (
 from .tracking_error import (
     tracking_error,
 )
+from .treynor import (
+    treynor_ratio,
+)
 
 __all__ = [
     "beta",
@@ -24,4 +27,5 @@ __all__ = [
     "tracking_error",
     "information_ratio",
     "active_return",
+    "treynor_ratio",
 ]
