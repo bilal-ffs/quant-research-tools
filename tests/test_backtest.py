@@ -149,3 +149,37 @@ def test_payoff_ratio_returns_float():
         bt.payoff_ratio(),
         float,
     )
+
+
+def test_summary_returns_dict():
+    bt = create_backtest()
+
+    summary = bt.summary()
+
+    assert isinstance(
+        summary,
+        dict,
+    )
+
+
+def test_summary_contains_all_metrics():
+    bt = create_backtest()
+
+    summary = bt.summary()
+
+    expected_keys = {
+        "cagr",
+        "sharpe_ratio",
+        "sortino_ratio",
+        "calmar_ratio",
+        "max_drawdown",
+        "drawdown_duration",
+        "profit_factor",
+        "expectancy",
+        "win_rate",
+        "average_win",
+        "average_loss",
+        "payoff_ratio",
+    }
+
+    assert set(summary.keys()) == expected_keys

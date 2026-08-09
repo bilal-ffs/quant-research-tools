@@ -167,3 +167,29 @@ class Backtest:
         return payoff_ratio(
             self.trade_results,
         )
+
+    def summary(self) -> dict[str, float | int]:
+        """
+        Return a summary of backtest metrics.
+
+        Returns
+        -------
+        dict[str, float | int]
+            Dictionary containing all performance,
+            risk, and trade analytics metrics.
+        """
+
+        return {
+            "cagr": self.cagr(),
+            "sharpe_ratio": self.sharpe_ratio(),
+            "sortino_ratio": self.sortino_ratio(),
+            "calmar_ratio": self.calmar_ratio(),
+            "max_drawdown": self.max_drawdown(),
+            "drawdown_duration": self.drawdown_duration(),
+            "profit_factor": self.profit_factor(),
+            "expectancy": self.expectancy(),
+            "win_rate": self.win_rate(),
+            "average_win": self.average_win(),
+            "average_loss": self.average_loss(),
+            "payoff_ratio": self.payoff_ratio(),
+        }
