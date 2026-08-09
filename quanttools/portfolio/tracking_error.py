@@ -40,10 +40,7 @@ def tracking_error(
         benchmark_returns,
     )
 
-    active_returns = (
-        portfolio_returns
-        - benchmark_returns
-    )
+    active_returns = portfolio_returns - benchmark_returns
 
     return float(
         active_returns.std(

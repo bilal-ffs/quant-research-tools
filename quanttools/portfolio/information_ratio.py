@@ -9,9 +9,6 @@ from __future__ import annotations
 
 import pandas as pd
 
-from quanttools.utils.validation import (
-        validate_return_pair,
-    )
 
 def information_ratio(
     portfolio_returns: pd.Series,
@@ -33,3 +30,27 @@ def information_ratio(
     float
         Information ratio.
     """
+
+    from quanttools.portfolio.tracking_error import (
+        tracking_error,
+    )
+    from quanttools.utils.validation import (
+        validate_return_pair,
+    )
+
+    portfolio_returns, benchmark_returns = validate_return_pair(
+        portfolio_returns,
+        benchmark_returns,
+    )
+
+    active_return = portfolio_returns.mean() - benchmark_returns.mean()
+
+    te = tracking_error(
+        portfolio_returns,
+        benchmark_returns,
+    )
+
+    if te == 0:
+        raise ValueError("tracking error is zero.")
+
+    return float(active_return / te)
