@@ -100,7 +100,7 @@ quant-research-tools/
 
 # Current Version
 
-**Latest Release:** v0.4.0
+**Latest Release:** v0.6.0
 
 ---
 
@@ -115,6 +115,30 @@ Before opening a pull request:
 - Run `pytest`
 
 ---
+## Backtest API
+
+```python
+import pandas as pd
+
+from quanttools import Backtest
+
+returns = pd.Series([...])
+trade_results = pd.Series([...])
+
+bt = Backtest(
+    returns,
+    trade_results,
+)
+
+print(bt.summary())
+print(bt.report())
+
+df = bt.to_dataframe()
+
+json_data = bt.to_json()
+
+bt.to_csv("summary.csv")
+```
 
 # License
 
