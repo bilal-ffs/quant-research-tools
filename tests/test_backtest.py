@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 import pandas as pd
 
@@ -248,3 +249,32 @@ def test_to_json_contains_metrics():
 
     assert "sharpe_ratio" in data
     assert "profit_factor" in data
+
+
+def test_to_csv_creates_file(tmp_path: Path):
+    bt = create_backtest()
+
+    filename = tmp_path / "summary.csv"
+
+    bt.to_csv(
+        str(filename),
+    )
+
+    assert filename.exists()
+
+
+def test_to_csv_contains_expected_columns(tmp_path: Path):
+    bt = create_backtest()
+
+    filename = tmp_path / "summary.csv"
+
+    bt.to_csv(
+        str(filename),
+    )
+
+    df = pd.read_csv(filename)
+
+    assert list(df.columns) == [
+        "Metric",
+        "Value",
+    ]

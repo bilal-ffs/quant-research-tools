@@ -228,3 +228,21 @@ class Backtest:
             self.summary(),
             indent=4,
         )
+
+    def to_csv(
+        self,
+        filename: str,
+    ) -> None:
+        """
+        Export the backtest summary to a CSV file.
+
+        Parameters
+        ----------
+        filename : str
+            Output CSV filename.
+        """
+
+        self.to_dataframe().to_csv(
+            filename,
+            index=False,
+        )
