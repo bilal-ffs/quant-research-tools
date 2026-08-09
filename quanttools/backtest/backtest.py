@@ -193,3 +193,21 @@ class Backtest:
             "average_loss": self.average_loss(),
             "payoff_ratio": self.payoff_ratio(),
         }
+
+    def to_dataframe(self) -> pd.DataFrame:
+        """
+        Return the backtest summary as a DataFrame.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Summary metrics in tabular format.
+        """
+
+        return pd.DataFrame(
+            self.summary().items(),
+            columns=[
+                "Metric",
+                "Value",
+            ],
+        )

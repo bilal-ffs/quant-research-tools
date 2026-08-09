@@ -183,3 +183,33 @@ def test_summary_contains_all_metrics():
     }
 
     assert set(summary.keys()) == expected_keys
+
+
+def test_to_dataframe_returns_dataframe():
+    bt = create_backtest()
+
+    df = bt.to_dataframe()
+
+    assert isinstance(
+        df,
+        pd.DataFrame,
+    )
+
+
+def test_to_dataframe_columns():
+    bt = create_backtest()
+
+    df = bt.to_dataframe()
+
+    assert list(df.columns) == [
+        "Metric",
+        "Value",
+    ]
+
+
+def test_to_dataframe_row_count():
+    bt = create_backtest()
+
+    df = bt.to_dataframe()
+
+    assert len(df) == len(bt.summary())
