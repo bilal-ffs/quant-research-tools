@@ -8,8 +8,11 @@ from .alpha import (
 from .beta import (
     beta,
 )
+from .tracking_error import (
+    tracking_error,
+)
 
-__all__ = [
-    "beta",
-    "alpha",
-]
+from .information_ratio import (
+    information_ratio,
+)
+__all__ = ["beta", "alpha", "tracking_error", "information_ratio", ]
