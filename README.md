@@ -54,8 +54,7 @@ Open-source quantitative finance utilities for systematic trading, portfolio ana
 
 - Value at Risk (VaR)
 - Conditional VaR (CVaR)
-- Beta
-- Alpha
+
 
 ### Portfolio Analytics
 
