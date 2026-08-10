@@ -13,6 +13,9 @@ from __future__ import annotations
 
 import pandas as pd
 
+from quanttools.risk import (
+    downside_deviation,
+)
 from quanttools.utils.validation import (
     validate_returns,
 )
@@ -53,22 +56,20 @@ def sortino_ratio(
 
     excess_returns = returns - periodic_risk_free_rate
 
-    # Step 3: Keep only downside returns
+    # Step 3: Validate downside deviation
 
-    downside_returns = excess_returns[excess_returns < 0]
+    downside = downside_deviation(
+        returns,
+        periodic_risk_free_rate,
+    )
 
-    # Step 4: Compute downside deviation
-
-    downside_deviation = downside_returns.std(ddof=1)
-    # Step 5: Validate downside deviation
-
-    if downside_returns.empty or pd.isna(downside_deviation) or downside_deviation == 0:
+    if downside == 0:
         raise ValueError("downside deviation is zero.")
 
-    # Step 6: Compute annualized Sortino Ratio
+    # Step 4: Compute annualized Sortino Ratio
 
     mean_return = excess_returns.mean()
 
-    sortino = (mean_return / downside_deviation) * (periods_per_year**0.5)
+    sortino = (mean_return / downside) * (periods_per_year**0.5)
 
     return float(sortino)
