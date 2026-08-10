@@ -42,19 +42,20 @@ Open-source quantitative finance utilities for systematic trading, portfolio ana
 - ✅ Information Ratio
 - ✅ Treynor Ratio
 
+### Risk Analytics
+
+- ✅ Volatility
+- ✅ Downside Deviation
+- ✅ Historical Value at Risk (VaR)
+- ✅ Conditional Value at Risk (CVaR)
+- ✅ Ulcer Index
+
 ## Planned
 
 ### Performance Metrics
 
 - Recovery Factor
 - Recovery Time
-- Volatility
-
-### Risk Metrics
-
-- Value at Risk (VaR)
-- Conditional VaR (CVaR)
-
 
 ### Portfolio Analytics
 
@@ -108,8 +109,7 @@ quant-research-tools/
 
 # Current Version
 
-**Latest Release:** v0.7.0
-
+**Latest Release:** v0.8.0
 ---
 
 # Contributing
