@@ -8,6 +8,9 @@ from .conditional_value_at_risk import (
 from .downside_deviation import (
     downside_deviation,
 )
+from .ulcer_index import (
+    ulcer_index,
+)
 from .value_at_risk import (
     value_at_risk,
 )
@@ -20,4 +23,5 @@ __all__ = [
     "downside_deviation",
     "value_at_risk",
     "conditional_value_at_risk",
+    "ulcer_index",
 ]
