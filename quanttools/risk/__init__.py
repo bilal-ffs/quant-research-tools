@@ -2,6 +2,9 @@
 Risk analytics.
 """
 
+from .conditional_value_at_risk import (
+    conditional_value_at_risk,
+)
 from .downside_deviation import (
     downside_deviation,
 )
@@ -16,4 +19,5 @@ __all__ = [
     "volatility",
     "downside_deviation",
     "value_at_risk",
+    "conditional_value_at_risk",
 ]
