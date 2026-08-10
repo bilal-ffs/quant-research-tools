@@ -6,7 +6,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
-![Tests](https://img.shields.io/badge/Tests-76%20Passing-success)
+![Tests](https://img.shields.io/badge/Tests-166%20Passing-success)
 
 Open-source quantitative finance utilities for systematic trading, portfolio analytics, and financial research.
 
