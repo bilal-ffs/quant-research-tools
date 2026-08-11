@@ -20,15 +20,6 @@ def test_single_return_sharpe():
         sharpe_ratio(returns)
 
 
-def test_single_return_sharpe():
-    returns = pd.Series(
-        [0.05],
-    )
-
-    with pytest.raises(ValueError):
-        sharpe_ratio(returns)
-
-
 def test_single_return_tracking_error():
     portfolio = pd.Series(
         [0.05],

@@ -94,17 +94,6 @@ def test_no_downside_deviation():
         [0.01, 0.02, 0.03, 0.04],
     )
 
-    with pytest.raises(ValueError):
-        downside_deviation(
-            returns,
-        )
-
-
-def test_no_downside_deviation():
-    returns = pd.Series(
-        [0.01, 0.02, 0.03, 0.04],
-    )
-
     result = downside_deviation(
         returns,
     )
