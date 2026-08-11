@@ -28,3 +28,16 @@ from quanttools.risk import (
     conditional_value_at_risk,
     ulcer_index,
 )
+## Complete Analysis
+
+The `complete_analysis.py` example demonstrates how QuantTools can combine:
+
+- Risk analytics
+- Portfolio analytics
+- Backtest analysis
+- Performance reporting
+
+Run:
+
+```bash
+python examples/complete_analysis.py
