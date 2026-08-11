@@ -7,6 +7,7 @@ __pycache__/
 .venv/
 venv/
 env/
+site/
 
 # Test & lint caches
 .pytest_cache/
@@ -20,6 +21,7 @@ htmlcov/
 # IDEs
 .vscode/
 .idea/
+
 
 # macOS
 .DS_Store

@@ -1,0 +1,16 @@
+site_name: Quant Research Tools
+site_description: Open-source quantitative finance utilities for systematic trading, portfolio analytics, risk analysis, and financial research.
+site_author: Bilal
+repo_url: https://github.com/bilal-ffs/quant-research-tools
+repo_name: bilal-ffs/quant-research-tools
+
+theme:
+  name: readthedocs
+
+nav:
+  - Home: index.md
+  - Statistics: statistics.md
+  - Portfolio: portfolio.md
+  - Risk: risk.md
+  - Backtest: backtest.md
+  - Reports: reports.md
