@@ -2,6 +2,9 @@
   <img src="images/banner.png" width="100%">
 </p>
 
+[![Python](https://img.shields.io/badge/Python-3.13-blue)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
 # Quant Research Tools
 
 Open-source quantitative finance utilities for systematic trading, portfolio analytics, risk analysis, and financial research.
