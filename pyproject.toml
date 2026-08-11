@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "quant-research-tools"
-version = "0.9.1"
+version = "1.0.0"
 description = "Open-source quantitative finance research toolkit."
 readme = "README.md"
 requires-python = ">=3.10"

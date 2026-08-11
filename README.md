@@ -6,9 +6,6 @@
 
 Open-source quantitative finance utilities for systematic trading, portfolio analytics, risk analysis, and financial research.
 
-[![Python](https://img.shields.io/badge/Python-3.13-blue)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-
 ---
 
 ## Overview
@@ -96,6 +93,14 @@ json_data = bt.to_json()
 bt.to_csv("summary.csv")
 ```
 
+The Backtest API provides:
+
+- Performance summaries
+- Human-readable reports
+- DataFrame export
+- JSON export
+- CSV export
+
 ---
 
 # Example
@@ -124,42 +129,50 @@ benchmark_returns = pd.Series([...])
 trade_results = pd.Series([...])
 
 # Risk
-print(volatility(returns))
-
 print(
-    value_at_risk(
-        returns,
-        confidence_level=0.95,
-    )
+    "Volatility:",
+    volatility(returns),
 )
 
 print(
+    "VaR:",
+    value_at_risk(
+        returns,
+        confidence_level=0.95,
+    ),
+)
+
+print(
+    "CVaR:",
     conditional_value_at_risk(
         returns,
         confidence_level=0.95,
-    )
+    ),
 )
 
 # Portfolio
 print(
+    "Beta:",
     beta(
         returns,
         benchmark_returns,
-    )
+    ),
 )
 
 print(
+    "Alpha:",
     alpha(
         returns,
         benchmark_returns,
-    )
+    ),
 )
 
 print(
+    "Information Ratio:",
     information_ratio(
         returns,
         benchmark_returns,
-    )
+    ),
 )
 
 # Backtest
@@ -195,6 +208,40 @@ Install in editable mode:
 pip install -e .
 ```
 
+For development:
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+---
+
+# Documentation
+
+Build and serve the documentation locally:
+
+```bash
+mkdocs serve
+```
+
+Build the documentation in strict mode:
+
+```bash
+mkdocs build --strict
+```
+
+The documentation covers:
+
+- Statistics
+- Portfolio Analytics
+- Risk Analytics
+- Backtest API
+- Reports
+- Metric definitions
+- Mathematical formulas
+- Usage examples
+- Research workflows
+
 ---
 
 # Running Tests
@@ -205,7 +252,22 @@ Run the complete test suite:
 pytest
 ```
 
-The project uses automated testing to validate the statistical, portfolio, risk, reporting, and backtest functionality.
+The project uses automated testing to validate:
+
+- Statistical metrics
+- Trade analytics
+- Portfolio analytics
+- Risk metrics
+- Backtest functionality
+- Input validation
+- Edge cases
+- Public API stability
+
+Current test suite:
+
+```text
+188 tests
+```
 
 ---
 
@@ -216,6 +278,7 @@ The project uses:
 - **Ruff** for linting
 - **Black** for formatting
 - **Pytest** for testing
+- **MkDocs** for documentation
 
 Before submitting changes:
 
@@ -223,7 +286,26 @@ Before submitting changes:
 ruff check . --fix
 black .
 pytest
+mkdocs build --strict
 ```
+
+---
+
+# Continuous Integration
+
+GitHub Actions validates the project across:
+
+- Python 3.10
+- Python 3.11
+- Python 3.12
+- Python 3.13
+
+CI checks:
+
+- Black formatting
+- Ruff linting
+- Pytest
+- MkDocs strict documentation build
 
 ---
 
@@ -250,18 +332,20 @@ quant-research-tools/
 
 # Current Version
 
-**Latest Release: v0.8.0**
+**Latest Release: v1.0.0**
 
-### Release Highlights
+Quant Research Tools v1.0.0 represents the first stable release of the core quantitative research toolkit.
 
-**v0.8.0 — Risk Analytics**
+The stable API includes:
 
-- Added Volatility
-- Added Downside Deviation
-- Added Historical VaR
-- Added Conditional VaR / Expected Shortfall
-- Added Ulcer Index
-- Expanded automated test coverage
+- Performance metrics
+- Trade analytics
+- Portfolio analytics
+- Risk analytics
+- Backtest functionality
+- Reporting functionality
+
+The package is tested across Python 3.10–3.13 and includes automated validation for the public API, edge cases, package installation, and documentation.
 
 ---
 
@@ -280,8 +364,11 @@ quant-research-tools/
 ## Future
 
 - Visualization tools
-- Additional research utilities
+- Additional quantitative research utilities
 - Expanded backtest functionality
+- Additional portfolio analytics
+
+Future additions will aim to maintain compatibility with the stable v1.0 API.
 
 ---
 
@@ -295,6 +382,7 @@ Before opening a pull request, make sure:
 ruff check . --fix
 black .
 pytest
+mkdocs build --strict
 ```
 
 Please open an issue before submitting large architectural changes.
