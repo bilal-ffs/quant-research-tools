@@ -9,6 +9,10 @@ from __future__ import annotations
 
 import pandas as pd
 
+from quanttools.utils.validation import (
+    validate_return_pair,
+)
+
 
 def tracking_error(
     portfolio_returns: pd.Series,
@@ -29,11 +33,12 @@ def tracking_error(
     -------
     float
         Tracking error.
-    """
 
-    from quanttools.utils.validation import (
-        validate_return_pair,
-    )
+    Raises
+    ------
+    ValueError
+        If tracking error is zero or undefined.
+    """
 
     portfolio_returns, benchmark_returns = validate_return_pair(
         portfolio_returns,
@@ -42,8 +47,13 @@ def tracking_error(
 
     active_returns = portfolio_returns - benchmark_returns
 
+    tracking_error_value = active_returns.std(
+        ddof=1,
+    )
+
+    if pd.isna(tracking_error_value) or tracking_error_value == 0:
+        raise ValueError("tracking error is zero.")
+
     return float(
-        active_returns.std(
-            ddof=1,
-        )
+        tracking_error_value,
     )

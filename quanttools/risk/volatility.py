@@ -33,13 +33,24 @@ def volatility(
     -------
     float
         Annualized volatility.
+
+    Raises
+    ------
+    ValueError
+        If volatility is zero.
     """
 
     returns = validate_returns(
         returns,
     )
 
+    if periods_per_year <= 0:
+        raise ValueError("periods_per_year must be greater than zero.")
+
     volatility_value = returns.std(ddof=1) * periods_per_year**0.5
+
+    if pd.isna(volatility_value) or volatility_value == 0:
+        raise ValueError("volatility is zero.")
 
     return float(
         volatility_value,

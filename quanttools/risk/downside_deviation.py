@@ -43,7 +43,7 @@ def downside_deviation(
 
     downside_returns = excess_returns[excess_returns < 0]
 
-    if downside_returns.empty:
+    if len(downside_returns) < 2:
         return 0.0
 
     downside_deviation_value = downside_returns.std(

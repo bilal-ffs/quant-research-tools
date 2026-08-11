@@ -50,6 +50,8 @@ def sortino_ratio(
 
     returns = validate_returns(returns)
 
+    if periods_per_year <= 0:
+        raise ValueError("periods_per_year must be greater than zero.")
     # Step 2: Compute excess returns
 
     periodic_risk_free_rate = risk_free_rate / periods_per_year

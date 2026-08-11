@@ -46,6 +46,10 @@ def sharpe_ratio(
     # Step 1: Validate input
 
     returns = validate_returns(returns)
+
+    if periods_per_year <= 0:
+        raise ValueError("periods_per_year must be greater than zero.")
+
     # Step 2: Compute excess returns
 
     periodic_risk_free_rate = risk_free_rate / periods_per_year
@@ -59,8 +63,9 @@ def sharpe_ratio(
 
     # Step 4: Validate volatility
 
-    if volatility == 0:
-        raise ValueError("standard deviation is zero.")
+    if pd.isna(volatility) or volatility == 0:
+        raise ValueError("standard deviation is zero or undefined.")
+
     # Step 5: Compute annualized Sharpe Ratio
 
     sharpe = (mean_return / volatility) * (periods_per_year**0.5)
