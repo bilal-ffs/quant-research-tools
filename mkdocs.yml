@@ -12,14 +12,19 @@ nav:
 
   - Statistics:
       - Overview: statistics.md
-      - Sharpe Ratio: sharpe.md
       - Drawdown: drawdown.md
-
+      - Sharpe Ratio: sharpe.md
 
   - Portfolio:
       - Overview: portfolio.md
-      
 
   - Risk: risk.md
   - Backtest: backtest.md
   - Reports: reports.md
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
