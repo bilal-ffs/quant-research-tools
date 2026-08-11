@@ -9,8 +9,17 @@ theme:
 
 nav:
   - Home: index.md
-  - Statistics: statistics.md
-  - Portfolio: portfolio.md
+
+  - Statistics:
+      - Overview: statistics.md
+      - Sharpe Ratio: sharpe.md
+      - Drawdown: drawdown.md
+
+
+  - Portfolio:
+      - Overview: portfolio.md
+      
+
   - Risk: risk.md
   - Backtest: backtest.md
   - Reports: reports.md
