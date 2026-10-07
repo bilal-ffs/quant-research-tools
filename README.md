@@ -331,20 +331,27 @@ quant-research-tools/
 
 # Current Version
 
-**Latest Release: v1.0.0**
+**Latest release: v1.0.0** (package version remains `1.0.0`).
 
-Quant Research Tools v1.0.0 represents the first stable release of the core quantitative research toolkit.
+**Latest development on `main`: performance reliability and bootstrap robustness.**
+These additions are unreleased; see [CHANGELOG.md](CHANGELOG.md).
 
-The stable API includes:
+The current API includes:
 
-- Performance metrics
-- Trade analytics
-- Portfolio analytics
-- Risk analytics
-- Backtest functionality
-- Reporting functionality
+- Performance and trade analytics, portfolio metrics, risk metrics, and reports.
+- Corrected drawdowns that include starting equity, plus labeled drawdown episodes
+  and recovery time with explicit unrecovered status.
+- Configurable annualization and annual risk-free rates for Backtest and reports.
+- Consistent benchmark index alignment and finite numeric input validation.
+- Reproducible IID and moving-block bootstrap through standalone functions and
+  `Backtest.robustness()`, with percentile summaries, valid counts, ending-loss
+  probability, and optional equity paths.
 
-The package is tested across Python 3.10–3.13 and includes automated validation for the public API, edge cases, package installation, and documentation.
+Local validation on Python 3.13: **360 tests passed**, Ruff and Black checks passed,
+and the strict MkDocs build passed. The synthetic example runs with
+`python -m examples.robustness_analysis`. Bootstrap distributions are conditional
+on the historical sample, not forecasts; cash trade P&L remains separate from
+periodic percentage returns.
 
 ---
 
