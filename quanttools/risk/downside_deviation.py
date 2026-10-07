@@ -10,6 +10,7 @@ from __future__ import annotations
 import pandas as pd
 
 from quanttools.utils.validation import (
+    validate_finite,
     validate_returns,
 )
 
@@ -27,13 +28,15 @@ def downside_deviation(
         Periodic returns.
 
     risk_free_rate : float, default=0.0
-        Risk-free rate expressed as a decimal.
+        Per-period risk-free rate expressed as a decimal.
 
     Returns
     -------
     float
         Downside deviation.
     """
+
+    validate_finite(risk_free_rate, "risk_free_rate")
 
     returns = validate_returns(
         returns,
@@ -43,7 +46,7 @@ def downside_deviation(
 
     downside_returns = excess_returns[excess_returns < 0]
 
-    if len(downside_returns) < 2:
+    if len(downside_returns) < 2 or downside_returns.nunique() < 2:
         return 0.0
 
     downside_deviation_value = downside_returns.std(

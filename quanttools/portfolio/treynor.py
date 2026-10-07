@@ -13,6 +13,7 @@ from quanttools.portfolio.beta import (
     beta,
 )
 from quanttools.utils.validation import (
+    validate_finite,
     validate_return_pair,
 )
 
@@ -34,13 +35,15 @@ def treynor_ratio(
         Benchmark periodic returns.
 
     risk_free_rate : float, default=0.0
-        Risk-free rate expressed as a decimal.
+        Per-period risk-free rate expressed as a decimal.
 
     Returns
     -------
     float
         Treynor ratio.
     """
+    validate_finite(risk_free_rate, "risk_free_rate")
+
     portfolio_returns, benchmark_returns = validate_return_pair(
         portfolio_returns,
         benchmark_returns,

@@ -28,6 +28,13 @@ from quanttools.statistics import (
     sortino_ratio,
     win_rate,
 )
+from quanttools.utils.validation import (
+    validate_finite,
+    validate_periods_per_year,
+    validate_returns,
+    validate_trade_results,
+)
+from quanttools.validation import BootstrapResult, iid_bootstrap, moving_block_bootstrap
 
 
 class Backtest:
@@ -40,17 +47,30 @@ class Backtest:
         Periodic returns.
 
     trade_results : pandas.Series
-        Profit and loss values for completed trades.
+        Cash profit and loss values for completed trades; not percentage returns.
+
+    periods_per_year : float, default=252
+        Positive finite observation frequency, supplied as a keyword argument.
+
+    risk_free_rate : float, default=0.0
+        Annual rate, divided by periods_per_year for Sharpe and Sortino.
     """
 
     def __init__(
         self,
         returns: pd.Series,
         trade_results: pd.Series,
+        *,
+        periods_per_year: float = 252,
+        risk_free_rate: float = 0.0,
     ) -> None:
 
-        self.returns = returns
-        self.trade_results = trade_results
+        validate_periods_per_year(periods_per_year)
+        validate_finite(risk_free_rate, "risk_free_rate")
+        self.returns = validate_returns(returns)
+        self.trade_results = validate_trade_results(trade_results)
+        self.periods_per_year = periods_per_year
+        self.risk_free_rate = risk_free_rate
 
     def report(self) -> str:
         """
@@ -60,6 +80,8 @@ class Backtest:
         return performance_report(
             self.returns,
             self.trade_results,
+            periods_per_year=self.periods_per_year,
+            risk_free_rate=self.risk_free_rate,
         )
 
     def sharpe_ratio(self) -> float:
@@ -69,6 +91,8 @@ class Backtest:
 
         return sharpe_ratio(
             self.returns,
+            periods_per_year=self.periods_per_year,
+            risk_free_rate=self.risk_free_rate,
         )
 
     def sortino_ratio(self) -> float:
@@ -78,6 +102,8 @@ class Backtest:
 
         return sortino_ratio(
             self.returns,
+            periods_per_year=self.periods_per_year,
+            risk_free_rate=self.risk_free_rate,
         )
 
     def cagr(self) -> float:
@@ -87,6 +113,7 @@ class Backtest:
 
         return cagr(
             self.returns,
+            periods_per_year=self.periods_per_year,
         )
 
     def calmar_ratio(self) -> float:
@@ -96,6 +123,7 @@ class Backtest:
 
         return calmar_ratio(
             self.returns,
+            periods_per_year=self.periods_per_year,
         )
 
     def max_drawdown(self) -> float:
@@ -169,6 +197,39 @@ class Backtest:
         return payoff_ratio(
             self.trade_results,
         )
+
+    def robustness(
+        self,
+        *,
+        method: str = "iid",
+        n_simulations: int = 1000,
+        horizon: int | None = None,
+        block_size: int = 5,
+        confidence_level: float = 0.95,
+        random_state: int | None = None,
+        return_paths: bool = False,
+    ) -> BootstrapResult:
+        """Opt-in return bootstrap using this backtest's annualization settings.
+
+        method is 'iid' or 'moving_block'. block_size applies only to moving
+        blocks. Cash trade P&L is never resampled or compounded here.
+        """
+        options = dict(
+            n_simulations=n_simulations,
+            horizon=horizon,
+            confidence_level=confidence_level,
+            random_state=random_state,
+            return_paths=return_paths,
+            periods_per_year=self.periods_per_year,
+            risk_free_rate=self.risk_free_rate,
+        )
+        if method == "iid":
+            return iid_bootstrap(self.returns, **options)
+        if method == "moving_block":
+            return moving_block_bootstrap(
+                self.returns, block_size=block_size, **options
+            )
+        raise ValueError("method must be 'iid' or 'moving_block'.")
 
     def summary(self) -> dict[str, float | int]:
         """

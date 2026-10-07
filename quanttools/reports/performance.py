@@ -28,6 +28,9 @@ from quanttools.statistics import (
 def performance_report(
     returns: pd.Series,
     trade_results: pd.Series,
+    *,
+    periods_per_year: float = 252,
+    risk_free_rate: float = 0.0,
 ) -> str:
     """
     Generate a performance report.
@@ -38,7 +41,13 @@ def performance_report(
         Periodic returns.
 
     trade_results : pandas.Series
-        Profit and loss values for completed trades.
+        Cash profit and loss values for completed trades.
+
+    periods_per_year : float, default=252
+        Positive finite observation frequency (keyword-only).
+
+    risk_free_rate : float, default=0.0
+        Annual rate, divided by periods_per_year for Sharpe and Sortino.
 
     Returns
     -------
@@ -48,13 +57,17 @@ def performance_report(
 
     # Performance
 
-    cagr_value = cagr(returns)
+    cagr_value = cagr(returns, periods_per_year=periods_per_year)
 
-    sharpe = sharpe_ratio(returns)
+    sharpe = sharpe_ratio(
+        returns, periods_per_year=periods_per_year, risk_free_rate=risk_free_rate
+    )
 
-    sortino = sortino_ratio(returns)
+    sortino = sortino_ratio(
+        returns, periods_per_year=periods_per_year, risk_free_rate=risk_free_rate
+    )
 
-    calmar = calmar_ratio(returns)
+    calmar = calmar_ratio(returns, periods_per_year=periods_per_year)
 
     # Risk
 

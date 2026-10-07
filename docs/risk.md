@@ -72,18 +72,10 @@ Downside deviation measures the variability of returns below a specified minimum
 
 QuantTools calculates downside deviation using returns below the periodic risk-free rate.
 
-The periodic risk-free rate is calculated as:
-
-\[
-r_{f,\text{periodic}}
-=
-\frac{r_f}{N}
-\]
-
-where:
-
-- \(r_f\) is the annual risk-free rate.
-- \(N\) is the number of return observations per year.
+The standalone `downside_deviation` function takes a **per-period** risk-free
+rate directly. It does not divide by periods per year. For an annual rate of 5%
+and monthly returns, pass `risk_free_rate=0.05 / 12`. Sortino performs this
+conversion before calling downside deviation.
 
 Returns below this threshold are treated as downside observations.
 
@@ -94,7 +86,7 @@ from quanttools.risk import downside_deviation
 
 result = downside_deviation(
     returns,
-    risk_free_rate=0.05,
+    risk_free_rate=0.05 / 12,
 )
 
 print(result)
@@ -213,8 +205,7 @@ The running peak is:
 \[
 P_t
 =
-\max_{i \leq t}
-E_i
+\max(1, \max_{i \leq t} E_i)
 \]
 
 The percentage drawdown is:
@@ -311,3 +302,5 @@ print(
 | **Ulcer Index** | Drawdown depth and persistence |
 
 Together, these metrics provide complementary perspectives on risk, covering **overall variability, downside risk, tail losses, and drawdown behavior**.
+
+See [input conventions](conventions.md) and [drawdown recovery](drawdown.md).

@@ -41,3 +41,11 @@ Run:
 
 ```bash
 python examples/complete_analysis.py
+
+## Recovery and bootstrap robustness
+
+From the repository root, run `python -m examples.robustness_analysis`.
+This synthetic monthly-data example shows configurable annualization,
+label-preserving recovery episodes, an unrecovered drawdown, reproducible IID
+and moving-block summaries, per-metric valid counts and ending-loss probability.
+It does not download data or compound cash trade P&L.

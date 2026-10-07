@@ -14,6 +14,8 @@ from __future__ import annotations
 import pandas as pd
 
 from quanttools.utils.validation import (
+    validate_finite,
+    validate_periods_per_year,
     validate_returns,
 )
 
@@ -47,8 +49,8 @@ def sharpe_ratio(
 
     returns = validate_returns(returns)
 
-    if periods_per_year <= 0:
-        raise ValueError("periods_per_year must be greater than zero.")
+    validate_periods_per_year(periods_per_year)
+    validate_finite(risk_free_rate, "risk_free_rate")
 
     # Step 2: Compute excess returns
 
@@ -63,7 +65,7 @@ def sharpe_ratio(
 
     # Step 4: Validate volatility
 
-    if pd.isna(volatility) or volatility == 0:
+    if returns.nunique() < 2 or pd.isna(volatility) or volatility == 0:
         raise ValueError("standard deviation is zero or undefined.")
 
     # Step 5: Compute annualized Sharpe Ratio

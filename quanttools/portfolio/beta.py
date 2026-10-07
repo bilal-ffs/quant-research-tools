@@ -35,13 +35,13 @@ def beta(
         Portfolio beta.
     """
 
-    if len(portfolio_returns) < 2:
-        raise ValueError("at least two observations are required.")
-
     portfolio_returns, benchmark_returns = validate_return_pair(
         portfolio_returns,
         benchmark_returns,
     )
+
+    if len(portfolio_returns) < 2:
+        raise ValueError("at least two paired observations are required.")
 
     covariance = portfolio_returns.cov(
         benchmark_returns,

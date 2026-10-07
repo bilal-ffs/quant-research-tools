@@ -228,3 +228,27 @@ Metrics         Metrics
 ```
 
 This allows strategy research to remain focused on the strategy itself while QuantTools handles the analysis and presentation of its results.
+
+## Configurable annualization
+
+`Backtest(returns, trade_results, *, periods_per_year=252, risk_free_rate=0.0)`
+and `performance_report(returns, trade_results, *, periods_per_year=252,
+risk_free_rate=0.0)` preserve existing calls and defaults. Use 12 for monthly
+returns; risk_free_rate is **annual**, converted arithmetically for Sharpe and
+Sortino. CAGR and Calmar use the same configured observation frequency.
+Default summary keys and text report sections remain unchanged.
+
+```python
+from quanttools import Backtest
+
+bt = Backtest(returns, trade_results, periods_per_year=12, risk_free_rate=0.03)
+print(bt.summary())
+result = bt.robustness(method="moving_block", block_size=3, random_state=42)
+print(result.summary)
+```
+
+Robustness is opt-in: summary and report never run simulations. Cash trade P&L
+is separate from percentage returns and is never compounded. See
+[bootstrap robustness](validation.md), [drawdown recovery](drawdown.md), and
+[input conventions](conventions.md). Undefined ratios retain their existing
+ValueError behavior in summaries and reports.

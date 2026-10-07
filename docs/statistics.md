@@ -631,3 +631,11 @@ These metrics describe different characteristics of a strategy:
 | **Payoff Ratio** | Average win relative to average loss |
 
 No individual metric completely describes strategy quality. Performance, risk, and trade characteristics should be evaluated together.
+
+## Recovery and robustness
+
+[Drawdown recovery](drawdown.md) documents `drawdown_episodes` and `recovery_time`.
+[Bootstrap robustness](validation.md) covers IID and moving-block simulation APIs,
+percentile summaries, valid counts and optional equity paths. Review
+[input conventions](conventions.md) for bankruptcy, index alignment and annual
+versus per-period risk-free rates.

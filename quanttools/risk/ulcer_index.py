@@ -10,9 +10,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from quanttools.utils.validation import (
-    validate_returns,
-)
+from quanttools.statistics.drawdown import drawdown_series
 
 
 def ulcer_index(
@@ -32,15 +30,7 @@ def ulcer_index(
         Ulcer Index.
     """
 
-    returns = validate_returns(
-        returns,
-    )
-
-    equity_curve = (1 + returns).cumprod()
-
-    running_peak = equity_curve.cummax()
-
-    drawdown = equity_curve / running_peak - 1
+    drawdown = drawdown_series(returns)
 
     squared_drawdowns = drawdown**2
 

@@ -60,3 +60,11 @@ The `Backtest` API provides a unified interface for analyzing return series and 
 Generate formatted performance reports from return and trade data.
 
 [Reports →](reports.md)
+
+### Recovery and robustness
+
+[Drawdown recovery](drawdown.md) documents `drawdown_episodes` and `recovery_time`.
+[Bootstrap robustness](validation.md) covers IID and moving-block simulation APIs,
+percentile summaries, valid counts and optional equity paths. Review
+[input conventions](conventions.md) for bankruptcy, index alignment and annual
+versus per-period risk-free rates.

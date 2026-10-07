@@ -14,6 +14,9 @@ from __future__ import annotations
 import pandas as pd
 
 from quanttools.utils.validation import (
+    compounded_equity,
+    validate_finite,
+    validate_periods_per_year,
     validate_returns,
 )
 
@@ -42,11 +45,10 @@ def cagr(
     # Step 1: Validate input
 
     returns = validate_returns(returns)
+    validate_periods_per_year(periods_per_year)
     # Step 2: Compute cumulative equity curve
 
-    growth_factor = 1 + returns
-
-    equity_curve = growth_factor.cumprod()
+    equity_curve = compounded_equity(returns)
     # Step 3: Compute investment duration
 
     periods = len(returns)
@@ -59,4 +61,5 @@ def cagr(
 
     cagr = (ending_value ** (1 / years)) - 1
 
+    validate_finite(cagr, "CAGR")
     return float(cagr)

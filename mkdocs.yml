@@ -21,6 +21,8 @@ nav:
   - Risk: risk.md
   - Backtest: backtest.md
   - Reports: reports.md
+  - Input conventions: conventions.md
+  - Bootstrap robustness: validation.md
 
 markdown_extensions:
   - pymdownx.arithmatex:

@@ -266,11 +266,7 @@ The project uses automated testing to validate:
 - Edge cases
 - Public API stability
 
-Current test suite:
-
-```text
-188 tests
-```
+The suite covers regression, edge cases, API stability and bootstrap reproducibility.
 
 ---
 
@@ -352,12 +348,62 @@ The package is tested across Python 3.10–3.13 and includes automated validatio
 
 ---
 
+# Recovery and bootstrap robustness
+
+Backtest and reports accept keyword-only `periods_per_year=252` and
+`risk_free_rate=0.0`. The latter is annual and divided by periods per year for
+Sharpe and Sortino. Standalone downside deviation, alpha and Treynor retain
+**per-period** risk-free-rate inputs.
+
+```python
+from quanttools.statistics import drawdown_episodes, recovery_time
+from quanttools.validation import iid_bootstrap, moving_block_bootstrap
+
+bt = Backtest(returns, trade_results, periods_per_year=12, risk_free_rate=0.03)
+print(drawdown_episodes(returns))
+print(recovery_time(returns))  # None if the deepest episode remains unrecovered
+result = bt.robustness(method="moving_block", block_size=3, random_state=42)
+print(result.summary)  # lower, median, upper percentiles and per-metric valid_count
+print(result.probability_of_loss)
+```
+
+Standalone bootstrap defaults are 1000 simulations, horizon equal to cleaned
+sample length, 95% central percentile bounds, 252 periods/year, annual risk-free
+rate 0, and no stored paths. Moving blocks default to block_size=5. Integer seeds
+use a local NumPy generator without changing global random state.
+`return_paths=True` retains equity paths beginning at 1.0. Undefined metrics stay
+NaN in per-simulation results, with valid counts; whole paths are not discarded.
+Summary and reports never run bootstrap unless robustness is requested separately.
+
+Drawdown includes starting capital as the initial high-water mark: returns
+`[-0.10, 0.05]` have drawdowns `[-0.10, -0.055]`. Recovery means reaching or exceeding
+the previous peak. Episodes preserve labels, count observations, and mark open
+recoveries explicitly. A -100% return makes compounded equity permanently zero;
+returns below -100% are rejected. Cash trade P&L stays separate from returns.
+Paired benchmark metrics require matching unique index labels, reorder by label,
+and remove missing pairs jointly; unrelated observations are never compared.
+
+Blocks preserve some local dependence within each block. Simulated distributions
+are conditional on the historical sample, **not forecasts**, and cannot introduce
+unseen regimes or losses. They do not select strategies or an optimal block size.
+
+Run a complete synthetic example from the repository root:
+
+```bash
+python -m examples.robustness_analysis
+```
+
+See [bootstrap documentation](docs/validation.md),
+[recovery analysis](docs/drawdown.md), [metric conventions](docs/conventions.md),
+and [intentional corrections and release notes](CHANGELOG.md).
+
+---
+
 # Roadmap
 
 ## Performance
 
 - Recovery Factor
-- Recovery Time
 
 ## Portfolio
 

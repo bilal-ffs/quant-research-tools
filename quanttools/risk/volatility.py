@@ -10,6 +10,7 @@ from __future__ import annotations
 import pandas as pd
 
 from quanttools.utils.validation import (
+    validate_periods_per_year,
     validate_returns,
 )
 
@@ -44,12 +45,11 @@ def volatility(
         returns,
     )
 
-    if periods_per_year <= 0:
-        raise ValueError("periods_per_year must be greater than zero.")
+    validate_periods_per_year(periods_per_year)
 
     volatility_value = returns.std(ddof=1) * periods_per_year**0.5
 
-    if pd.isna(volatility_value) or volatility_value == 0:
+    if returns.nunique() < 2 or pd.isna(volatility_value) or volatility_value == 0:
         raise ValueError("volatility is zero.")
 
     return float(

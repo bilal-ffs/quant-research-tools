@@ -2,6 +2,7 @@ import quanttools
 import quanttools.portfolio as portfolio
 import quanttools.risk as risk
 import quanttools.statistics as statistics
+import quanttools.validation as validation
 
 
 def test_top_level_api():
@@ -14,6 +15,8 @@ def test_top_level_api():
 def test_statistics_api():
     expected = {
         "drawdown_series",
+        "drawdown_episodes",
+        "recovery_time",
         "max_drawdown",
         "drawdown_duration",
         "cagr",
@@ -54,3 +57,13 @@ def test_risk_api():
     }
 
     assert set(risk.__all__) == expected
+
+
+def test_validation_api():
+    assert set(validation.__all__) == {
+        "BootstrapResult",
+        "iid_bootstrap",
+        "moving_block_bootstrap",
+    }
+    for name in validation.__all__:
+        assert callable(getattr(validation, name))

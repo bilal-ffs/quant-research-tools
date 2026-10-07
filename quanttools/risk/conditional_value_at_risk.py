@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 
 from quanttools.utils.validation import (
+    validate_finite,
     validate_returns,
 )
 
@@ -41,6 +42,7 @@ def conditional_value_at_risk(
         returns,
     )
 
+    validate_finite(confidence_level, "confidence_level")
     if not 0 < confidence_level < 1:
         raise ValueError("confidence_level must be between 0 and 1.")
 

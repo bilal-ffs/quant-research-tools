@@ -17,6 +17,8 @@ from quanttools.risk import (
     downside_deviation,
 )
 from quanttools.utils.validation import (
+    validate_finite,
+    validate_periods_per_year,
     validate_returns,
 )
 
@@ -50,8 +52,8 @@ def sortino_ratio(
 
     returns = validate_returns(returns)
 
-    if periods_per_year <= 0:
-        raise ValueError("periods_per_year must be greater than zero.")
+    validate_periods_per_year(periods_per_year)
+    validate_finite(risk_free_rate, "risk_free_rate")
     # Step 2: Compute excess returns
 
     periodic_risk_free_rate = risk_free_rate / periods_per_year

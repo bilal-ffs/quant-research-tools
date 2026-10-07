@@ -16,8 +16,10 @@ from .calmar import (
 )
 from .drawdown import (
     drawdown_duration,
+    drawdown_episodes,
     drawdown_series,
     max_drawdown,
+    recovery_time,
 )
 from .expectancy import (
     expectancy,
@@ -40,6 +42,8 @@ from .win_rate import (
 
 __all__ = [
     "drawdown_series",
+    "drawdown_episodes",
+    "recovery_time",
     "max_drawdown",
     "drawdown_duration",
     "sharpe_ratio",

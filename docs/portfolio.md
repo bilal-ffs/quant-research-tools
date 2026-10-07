@@ -365,3 +365,10 @@ print(
 | **Treynor Ratio** | Excess return relative to systematic risk |
 
 These metrics should be interpreted together. Beta describes benchmark sensitivity, Active Return describes relative performance, Tracking Error describes benchmark-relative risk, and Information Ratio evaluates the efficiency of active performance.
+
+## Alignment and rate conventions
+
+All paired metrics require matching unique index labels, align benchmark order
+to portfolio order, then drop missing observations jointly. Mismatched labels or
+duplicate labels raise ValueError. Alpha and Treynor take **per-period** risk-free
+rates. See [input conventions](conventions.md) for details and undefined ratios.
